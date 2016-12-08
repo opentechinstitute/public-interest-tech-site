@@ -5,12 +5,12 @@ import render from './Render';
 import search from './Search';
 import sheet from './Sheet';
 
-const SPREADSHEET_ID = '1kq6z9cEeqqGL5R5mdclkj5HjD-w9dvL8xCYmhG1UziQ';
+const SPREADSHEET_ID = '1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4'; //'1kq6z9cEeqqGL5R5mdclkj5HjD-w9dvL8xCYmhG1UziQ';
 const NO_RESULTS_COPY = "Can't find the organization you're looking for? Help grow our Togetherlist database. Please submit using our <a href='https://docs.google.com/forms/d/e/1FAIpQLScS3scl2_LiNyDk0jf1CCPF9qsZlmrlvTWW_ckMlhGeEL0OXw/viewform?c=0&w=1'>Submissions Form</a>."
 
 class App {
   constructor() {
-    this.resetFilters();
+    this.resetFilters(); 
   }
 
   resetFilters() {
@@ -44,10 +44,12 @@ class App {
         obj.description = obj.description100characters;
         obj.donatelink = util.trim(obj.donatelink);
         obj.volunteerlink = util.trim(obj.volunteerlink);
+        obj.contributelink = util.trim(obj.contributelink);
         obj.number = util.parseNumber(obj.numbers);
         obj.services = [];
         if (obj.donatelink) obj.services.push('donations');
         if (obj.volunteerlink) obj.services.push('volunteers');
+        if (obj.contributelink) obj.services.push('open source contributions');
         obj.services = obj.services.concat(obj.additionalServices);
 
         // console.log(obj); // debug

@@ -24,6 +24,7 @@ const render = {
               <div class="result-actions">
                 ${data.donatelink ? `<a target="_blank" href="${data.donatelink}">Donate</a>` : ''}
                 ${data.volunteerlink ? `<a target="_blank" href="${data.volunteerlink}">Volunteer</a>` : ''}
+                ${data.contributelink ? `<a target="_blank" href="${data.contributelink}">Contribute</a>` : ''}
               </div>
           </div>
           <div class="result-sharing"></div>

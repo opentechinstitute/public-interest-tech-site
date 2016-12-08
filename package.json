@@ -24,7 +24,19 @@
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.1",
+    "webpack": "^1.14.0",
     "webpack-dev-server": "^1.14.1"
-  }
+  },
+  "description": "The main places you're going to want to look are app/App.js, app/Render.js, and (just to check that everything's working) main.bundle.js.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frnsys/togetherlist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frnsys/togetherlist/issues"
+  },
+  "homepage": "https://github.com/frnsys/togetherlist#readme"
 }

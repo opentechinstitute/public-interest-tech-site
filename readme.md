@@ -1,36 +1,44 @@
-# togetherlist
+# About this website
 
-The site for [togetherlist](http://togetherlist.com/).
+This is the site for the Public Interest Technology Project, a participatory action research project led by [Research Action Design](rad.cat) and supported by the [Open Technology Institute](https://opentechinstitute.org) at [The New America Foundation](https://newamerica.org). It was developed by [Maya Wagoner](https://github.com/mayawagon)
 
 ## Setup
 
-Install dependencies:
+Make sure your dependencies are installed:
 
     npm install -d
+    npm install webpack -g
+    npm install webpack-dev-server -g
 
 For development, run the webpack server and sass:
 
-    npm start
+    webpack-dev-server --progress --colors
     sass --watch css/main.sass:css/main.css
 
-For production, build the site:
+Yay! You can now get to it by navigating to localhost:8080 in a browser. 
+
+When you're ready for production, build the site:
 
     npm run build
 
-## Updating Neocities
+## How do I start messing with it?
 
-The site runs on [Neocities](https://neocities.org/).
+The main places you're going to want to look are app/App.js, app/Render.js, and (just to check that everything's working) main.bundle.js. 
 
-A script is included to sync this directory to a Neocities site.
+Index.html might also be helpful. 
 
-It has two dependencies:
+If you look in app/App.js, you'll see a constant called SPREADSHEET_ID. That's the unique identifier of the spreadsheet the data is being pulled from. In this case, it's [https://docs.google.com/spreadsheets/d/1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4/edit#gid=0](https://docs.google.com/spreadsheets/d/1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4/edit#gid=0). The names of the columns are important, so don't change them wihtout changing them in app/App.js and app/Render.js as well (e.g. if you want to change the column Vegetables (y/n) in the spreadsheet, do a ctrl+f in App.js for vegetablesyn and change it everywhere it shows up there as well).
 
-    pip install requests python-dateutil
+If you want to use a google spreadsheet in this way, you have to not only make it public, but also go to File > Publish to the Web > Publish (default settings are fine). 
 
-And then you can update the site with this command:
+If you want to change basic styling things, like colors and fonts, go to css > main.sass and update it there. But make sure your sass compiler is running so that it gets turned into valid CSS! If it's not, run:
 
-    python update.py NEOCITIES_USERNAME NEOCITIES_PASSWORD
+sass --watch css/main.sass:css/main.css
 
-## Note on fonts
+## Many thanks to togetherlist
 
-The font used is [Halis Rounded](https://www.fontspring.com/fonts/ahmet-altun/halis-rounded).
+This site is based on [togetherlist](http://togetherlist.com/).
+
+It uses Webpack to bundle up: [Webpack](https://webpack.github.io/docs/tutorials/getting-started/).
+
+If you need more help than is provided here, look into those Webpack tutorials! And/or, reach out to [maya@opentechinstitute.org](mailto:maya@opentechinstitute.org).

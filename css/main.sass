@@ -1,13 +1,18 @@
 @import reset
 @import fonts
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700')
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro')
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro')
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
 
-$primaryColor: #652d90
-$secondaryColor: #361d51
-$altColor: #00babc
-$altSecondaryColor: #009495
-$primaryFont: 'Halis', 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
+$secondaryColor: #f8e30d // Super bright accent yellow
+$altColor: #72cace // A bright, but friendly and approachable teal-blue
+$primaryColor: #c95e31 // Red-orange: powerful and says we mean business. Could be brighter?
+$altSecondaryColor: #f5743d // brighter red-orange
+$white: #fdfdf1 // A warm off-white: 
+$black: #415851 // A cool, dark grey
+$primaryFont: 'Source Sans Pro', 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
+$headerFont: 'Souce Code Pro', 'Inconsolata', 'Courier', monospace
 
 *
   -moz-box-sizing: border-box
@@ -17,9 +22,13 @@ $primaryFont: 'Halis', 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', san
 html
   font-family: $primaryFont
 
+h1, h2, h3, h4, h5, h6 
+  font-family: $headerFont
+
 main
   min-height: 100vh
   position: relative
+  background: $white
 
 .content
   max-width: 960px
@@ -46,7 +55,7 @@ b
     padding: 1.2em 0.4em 1em 0.4em
     font-size: 0.8em
     text-align: center
-    color: #fff
+    color: #444
     cursor: pointer
   i
     padding: 0 0.5em
@@ -68,7 +77,7 @@ b
     &.selected
       border-bottom: 2px solid #fff
 .filters-all
-  background: $altColor
+  background: $primaryColor
   color: #fff
   padding: 1em 0
   button
@@ -114,12 +123,11 @@ a, a:visited
     color: $primaryColor
 
 header
-  color: #fff
-  background: $primaryColor
-  background-image: url('../assets/header.jpg')
+  color: #444
+  background: $altColor
+  //background-image: url('../assets/subway-lines.png')
   background-size: cover
   background-position: top center
-  padding: 1em
   h1
     a, a:visited, a:hover
       color: #fff !important
@@ -127,26 +135,45 @@ header
   .logo
     float: left
     font-size: 1.8em
-  .get-involved
-    float: right
-    li
-      float: left
-      padding: 0.5em 1em
-      border: 2px solid $altColor
-      text-transform: lowercase
-      a, a:visited
-        color: #fff
-        text-decoration: none
-      &:first-child
-        background: $altColor
   img
     width: 32px
     margin-right: 0.1em
     vertical-align: middle
     margin-top: -2px
+  .content
+    padding: 1em 2em
 
 .header-bar
-  font-size: 0.8em
+  height: 50px
+  padding: 1em
+  background-color: $black
+  color: $white
+  display: flex
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 1
+  a, a:visited
+    color: #fff
+    text-decoration: none
+    &:hover
+      color: #fff
+      text-decoration: underline
+  img
+    width: 42px
+    vertical-align: middle
+    margin-right: 0.5em
+  .header-bar-left,
+  .header-bar-right
+    span, a
+      margin: 0 0.5em
+  .header-bar-right
+    text-align: right
+  .header-bar-left,
+  .header-bar-right,
+    flex: 1
+    line-height: 2.5
 
 .title
   text-transform: uppercase
@@ -156,7 +183,7 @@ header
   margin: 3em 0 0.8em 0
 
 footer
-  background: #212121
+  background: $black
   color: #fff
   padding: 0.5em 1em
   display: flex
