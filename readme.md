@@ -27,11 +27,11 @@ The main places you're probably going to want to look are app/App.js, app/Render
 
 Index.html might also be helpful. 
 
-If you look in app/App.js, you'll see a constant called SPREADSHEET_ID. That's the unique identifier of the spreadsheet some of the data is being pulled from. In this case, it's [this spreadsheet of public interest technology projects, companies, and organizations](https://docs.google.com/spreadsheets/d/1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4/edit#gid=0). The names of the columns are important, so don't change them wihtout changing them in app/App.js and app/Render.js as well (for example if you want to change the column "Vegetables (y/n)" in the spreadsheet, do a ctrl+f in App.js for "vegetablesyn" and change it everywhere it shows up there as well).
+If you look in app/App.js, you'll see a constant called SPREADSHEET_ID. That's the unique identifier of the spreadsheet some of the data is being pulled from. In the case of our orglist page, it's [this spreadsheet of public interest technology projects, companies, and organizations](https://docs.google.com/spreadsheets/d/1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4/edit#gid=0). The names of the columns are important, so don't change them wihtout changing them in app/App.js and app/Render.js as well (for example if you want to change the column "Vegetables (y/n)" in the spreadsheet, do a ctrl+f in App.js for "vegetablesyn" and change it everywhere it shows up there as well).
 
 If you want to use your own google spreadsheet in this way, you have to both change the sharing settings to make it public, and go to File > Publish to the Web > Publish (with defaults). 
 
-If you want to change just basic styling things, like colors and fonts, go to css > main.sass and update it there. But make sure your sass compiler is running so that it gets turned into valid CSS! If it's not, run:
+If you want to change just basic styling, like colors and fonts, go to css > main.sass and update it there. But make sure your sass compiler is running so that it gets turned into valid CSS! If it's not, run:
 
 	sass --watch css/main.sass:css/main.css
 

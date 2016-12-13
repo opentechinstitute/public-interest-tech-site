@@ -12306,7 +12306,7 @@
 	
 	var render = {
 	  result: function result(data) {
-	    return '\n      <li class="result">\n          <div class="result-preview">\n            <h2><span>' + _Util2.default.truncate(data.name, 30) + '</span></h2>\n            <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n          </div>\n          <div class="result-info">\n              <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> welcomes ' + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
+	    return '\n      <li class="result">\n          <div class="result-preview">\n            <h2><span>' + _Util2.default.truncate(data.name, 30) + '</span></h2>\n            <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n          </div>\n          <div class="result-info">\n              <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> is ' + data.whatisit + " that welcomes " + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
 	      return '<span class="result-service">' + s.toLowerCase().replace('esl', 'ESL') + '</span>';
 	    })) + (data.additionalServices.length > 0 ? ' help' : '') + '.</h3>\n              <div class="result-meta">\n                <div class="result-meta-info">\n                  ' + (data.state ? '<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>' : '') + '\n                  <h5>' + data.categories.join(', ') + '</h5>\n                </div>\n                <div class="result-meta-share">\n                  ' + (data.number ? '<a href="tel:' + data.number + '"><i class="fa fa-phone"></i></a>' : '') + '\n                  <i class="fa fa-share-alt action-share" data-id="' + data.id + '"></i>\n                </div>\n              </div>\n              <div class="result-actions">\n                ' + (data.donatelink ? '<a target="_blank" href="' + data.donatelink + '">Donate</a>' : '') + '\n                ' + (data.volunteerlink ? '<a target="_blank" href="' + data.volunteerlink + '">Volunteer</a>' : '') + '\n              </div>\n          </div>\n          <div class="result-sharing"></div>\n      </li>';
 	  },
@@ -14489,4 +14489,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=main.bundle.js.map
+//# sourceMappingURL=orglist.bundle.js.map

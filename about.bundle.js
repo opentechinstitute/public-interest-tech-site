@@ -64,7 +64,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var SPREADSHEET_ID = '1ZbpkjdrrAH95xHWKxjp-bb6nvoKZIZLhXrDwBREa_PA';
+	var SPREADSHEET_ID = '1j3zUIVBgxS7ZiSGlMsnq-g8bwsFGASr6ShZjX5CtQTU'; //'1ZbpkjdrrAH95xHWKxjp-bb6nvoKZIZLhXrDwBREa_PA'; 
 	
 	// setup contributors
 	_Sheet2.default.load(SPREADSHEET_ID, 1, function (rows) {
@@ -98,18 +98,16 @@
 	});
 	
 	// setup about text
-	_Sheet2.default.load(SPREADSHEET_ID, 2, function (rows) {
-	  var topText = _Sheet2.default.parseRow(rows[0]).text,
-	      introText = _Sheet2.default.parseRow(rows[1]).text,
-	      bodyText = _Sheet2.default.parseRow(rows[2]).text;
-	  (0, _jquery2.default)('.about-intro .about-body').html('<p><b>' + topText + '</b></p>');
-	  (0, _jquery2.default)('.about-intro .about-body').append(_underscore2.default.map(introText.split('\n'), function (line) {
-	    return '<p>' + line + '</p>';
-	  }));
-	  (0, _jquery2.default)('.about-letter').html(_underscore2.default.map(bodyText.split('\n'), function (line) {
-	    return '<p>' + line + '</p>';
-	  }));
-	});
+	// sheet.load(SPREADSHEET_ID, 2, rows => {
+	//   var topText = sheet.parseRow(rows[0]).text,
+	//       introText = sheet.parseRow(rows[1]).text,
+	//       bodyText = sheet.parseRow(rows[2]).text;
+	//   $('.about-intro .about-body').html(`<p><b>${topText}</b></p>`);
+	//   $('.about-intro .about-body').append(
+	//     _.map(introText.split('\n'), line => `<p>${line}</p>`));
+	//   $('.about-letter').html(
+	//     _.map(bodyText.split('\n'), line => `<p>${line}</p>`));
+	// });
 
 /***/ },
 /* 1 */

@@ -35,6 +35,7 @@ class App {
 
         // some extra parsing
         obj.id = i;
+        obj.whatisit = obj.whatisit;
         obj.rating = util.parseRating(obj.charitynavigatorrating);
         obj.deductible = util.parseBool(obj.taxdeductibleyn);
         obj.accredited = util.parseBool(obj.accreditedbusinessyn);
