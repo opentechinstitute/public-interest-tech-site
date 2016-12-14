@@ -12082,7 +12082,7 @@
 	    }
 	  }, {
 	  	//maya this is a hack to make categories look like subcategories. Fix it later.
-	  	key: 'loadSubCategories',
+	  	/* key: 'loadSubCategories',
 	    value: function loadSubCategories() {
 	      var _this2 = this;
 	
@@ -12093,8 +12093,8 @@
 	          return cat;
 	        });
 	      });
-	    }
-	    /* key: 'loadSubCategories',
+	    } */
+	    key: 'loadSubCategories',
 	    value: function loadSubCategories() {
 	      var _this3 = this;
 	
@@ -12105,7 +12105,7 @@
 	          return cat;
 	        });
 	      });
-	    } */
+	    } 
 	  }, {
 	    key: 'loadServices',
 	    value: function loadServices() {
