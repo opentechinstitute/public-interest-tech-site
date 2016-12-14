@@ -88,6 +88,8 @@ class App {
     });
   }
 
+  //maya fix this 
+
   loadSubCategories() {
     sheet.load(SPREADSHEET_ID, 3, rows => {
       this.categories = _.map(rows, row => {
