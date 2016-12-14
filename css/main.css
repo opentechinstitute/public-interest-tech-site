@@ -127,20 +127,6 @@ b {
   .filters-stars i {
     font-size: 12px; }
 
-.filters-categories {
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap; }
-  .filters-categories button {
-    text-transform: uppercase;
-    font-size: 0.8em;
-    padding: 1.2em 0.8em 1em 0.8em;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap; }
-    .filters-categories button:hover {
-      border-bottom: 2px dotted #fff; }
-    .filters-categories button.selected {
-      border-bottom: 2px solid #fff; }
-
 .filters-all {
   background: #c95e31;
   color: #fff;
