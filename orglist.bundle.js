@@ -12081,19 +12081,6 @@
 	      });
 	    }
 	  }, {
-	  	//maya this is a hack to make categories look like subcategories. Fix it later.
-	  	/* key: 'loadSubCategories',
-	    value: function loadSubCategories() {
-	      var _this2 = this;
-	
-	      _Sheet2.default.load(SPREADSHEET_ID, 2, function (rows) {
-	        _this2.categories = _underscore2.default.map(rows, function (row) {
-	          var cat = _Sheet2.default.parseRow(row)['category'];
-	          (0, _jquery2.default)('.filters-subcategories').append('<button data-subcategory="' + cat + '">' + cat + '</button>');
-	          return cat;
-	        });
-	      });
-	    } */
 	    key: 'loadSubCategories',
 	    value: function loadSubCategories() {
 	      var _this3 = this;
