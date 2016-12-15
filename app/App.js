@@ -46,11 +46,13 @@ class App {
         obj.donatelink = util.trim(obj.donatelink);
         obj.volunteerlink = util.trim(obj.volunteerlink);
         obj.contributelink = util.trim(obj.contributelink);
+        obj.joblink = util.trim(obj.joblink);
         obj.number = util.parseNumber(obj.numbers);
         obj.services = [];
         if (obj.donatelink) obj.services.push('donations');
         if (obj.volunteerlink) obj.services.push('volunteers');
         if (obj.contributelink) obj.services.push('open source contributions');
+        if (obj.joblink) obj.services.push('applications');
         obj.services = obj.services.concat(obj.additionalServices);
 
         // console.log(obj); // debug
