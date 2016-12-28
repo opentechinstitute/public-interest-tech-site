@@ -5,7 +5,8 @@ module.exports = {
     main: './main',
     about: './about',
     faq: './faq',
-    resources: './resources'
+    resources: './resources',
+    orglist: './orglist'
   },
   output: {
     filename: "[name].bundle.js"
