@@ -3,13 +3,17 @@ import util from './Util';
 
 const render = {
   result: function(data) {
+    var ifdead = "";
+    if (data.dead == true) {
+      var ifdead = "dead";
+    }
     return `
-      <li class="result">
+      <li class="result ${ifdead}">
           <div class="result-preview">
             <h2><span>${util.truncate(data.name, 30)}</span></h2>
             <p class="result-description">${util.truncate(data.description, 132)}</p>
           </div>
-          <div class="result-info">
+          <div class="result-info ${ifdead}">
               <h3><a href="${data.website ? data.website : '#'}" target="_blank">${data.name}</a> is ${data.whatisit} ${util.joinAnd(_.map(data.services, s => `<span class="result-service">${s.toLowerCase().replace('esl', 'ESL')}</span>`))}${data.additionalServices.length > 0 ? ' help' : ''}.</h3>
               <div class="result-meta">
                 <div class="result-meta-info">

@@ -48,6 +48,7 @@ class App {
         obj.contributelink = util.trim(obj.contributelink);
         obj.joblink = util.trim(obj.joblink);
         obj.number = util.parseNumber(obj.numbers);
+        obj.dead = util.parseBool(obj.dead);
         obj.services = [];
         if (obj.donatelink) obj.services.push('donations');
         if (obj.volunteerlink) obj.services.push('volunteers');
@@ -89,8 +90,6 @@ class App {
       });
     });
   }
-
-  //maya fix this 
 
   loadSubCategories() {
     sheet.load(SPREADSHEET_ID, 3, rows => {
