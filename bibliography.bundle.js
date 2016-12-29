@@ -46,14 +46,14 @@
 
 	'use strict';
 	
-	var _App = __webpack_require__(5);
+	var _Bibliography = __webpack_require__(5);
 	
-	var _App2 = _interopRequireDefault(_App);
+	var _Bibliography2 = _interopRequireDefault(_Bibliography);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var app = new _App2.default();
-	app.run();
+	var bib = new _Bibliography2.default();
+	bib.run();
 
 /***/ },
 /* 1 */
@@ -11988,14 +11988,14 @@
 	var SPREADSHEET_ID = '1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4';
 	var NO_RESULTS_COPY = "Can't find the organization you're looking for? Help grow our Togetherlist database. Please submit using our <a href='https://docs.google.com/forms/d/e/1FAIpQLScS3scl2_LiNyDk0jf1CCPF9qsZlmrlvTWW_ckMlhGeEL0OXw/viewform?c=0&w=1'>Submissions Form</a>.";
 	
-	var App = function () {
-	  function App() {
-	    _classCallCheck(this, App);
+	var Bib = function () {
+	  function Bib() {
+	    _classCallCheck(this, Bib);
 	
 	    this.resetFilters();
 	  }
 	
-	  _createClass(App, [{
+	  _createClass(Bib, [{
 	    key: 'resetFilters',
 	    value: function resetFilters() {
 	      this.filters = {
@@ -12020,7 +12020,7 @@
 	          // skip if no name
 	          if (!obj.name) return;
 	
-	          // some extra parsing
+	          // some extra parsing (that obj name on the right? That comes directly from the text you type in the header row of the spreadsheet)
 	          obj.id = i;
 	          obj.rating = _Util2.default.parseRating(obj.charitynavigatorrating);
 	          obj.deductible = _Util2.default.parseBool(obj.taxdeductibleyn);
@@ -12031,10 +12031,12 @@
 	          obj.description = obj.description100characters;
 	          obj.donatelink = _Util2.default.trim(obj.donatelink);
 	          obj.volunteerlink = _Util2.default.trim(obj.volunteerlink);
+	          obj.contributelink = _Util2.default.trim(obj.contributelink);
 	          obj.number = _Util2.default.parseNumber(obj.numbers);
 	          obj.services = [];
 	          if (obj.donatelink) obj.services.push('donations');
 	          if (obj.volunteerlink) obj.services.push('volunteers');
+	          if (obj.contributelink) obj.services.push('open source contributions');
 	          obj.services = obj.services.concat(obj.additionalServices);
 	
 	          // console.log(obj); // debug
@@ -12279,10 +12281,10 @@
 	    }
 	  }]);
 	
-	  return App;
+	  return Bib;
 	}();
 	
-	exports.default = App;
+	exports.default = Bib;
 
 /***/ },
 /* 6 */
@@ -12306,9 +12308,25 @@
 	
 	var render = {
 	  result: function result(data) {
-	    return '\n      <li class="result">\n          <div class="result-preview">\n            <h2><span>' + _Util2.default.truncate(data.name, 30) + '</span></h2>\n            <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n          </div>\n          <div class="result-info">\n              <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> welcomes ' + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
-	      return '<span class="result-service">' + s.toLowerCase().replace('esl', 'ESL') + '</span>';
-	    })) + (data.additionalServices.length > 0 ? ' help' : '') + '.</h3>\n              <div class="result-meta">\n                <div class="result-meta-info">\n                  ' + (data.state ? '<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>' : '') + '\n                  <h5>' + data.categories.join(', ') + '</h5>\n                </div>\n                <div class="result-meta-share">\n                  ' + (data.number ? '<a href="tel:' + data.number + '"><i class="fa fa-phone"></i></a>' : '') + '\n                  <i class="fa fa-share-alt action-share" data-id="' + data.id + '"></i>\n                </div>\n              </div>\n              <div class="result-actions">\n                ' + (data.donatelink ? '<a target="_blank" href="' + data.donatelink + '">Donate</a>' : '') + '\n                ' + (data.volunteerlink ? '<a target="_blank" href="' + data.volunteerlink + '">Volunteer</a>' : '') + '\n              </div>\n          </div>\n          <div class="result-sharing"></div>\n      </li>';
+	    var ifdead = "";
+	    if (data.dead == true) {
+	      var ifdead = "dead";
+	      var tense = "was";
+	    } else {
+	      var tense = "is";
+	    }
+	    if (data.services.length > 0) {
+	      var ifaccepting = " that accepts";
+	    } else {
+	      var ifaccepting = "";
+	    }
+	    if (data.descriptionlength < 20 || data.descriptionlength > 100) {
+	      return;
+	    } else {
+	      return '\n        <li class="result ' + ifdead + '">\n            <div class="result-preview">\n              <h2><span>' + _Util2.default.truncate(data.name, 30) + '</span></h2>\n              <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n            </div>\n            <div class="result-info ' + ifdead + '">\n                <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> ' + tense + ' ' + data.whatisit + ifaccepting + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
+	        return ' <span class="result-service">' + s.toLowerCase().replace('esl', 'ESL') + '</span>';
+	      })) + (data.additionalServices.length > 0 ? '' : '') + '.</h3>\n                <div class="result-meta">\n                  <div class="result-meta-info">\n                    ' + (data.state ? '<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>' : '') + '\n                    <h5>' + data.categories.join(', ') + '</h5>\n                  </div>\n                  <div class="result-meta-share">\n                    ' + (data.number ? '<a href="tel:' + data.number + '"><i class="fa fa-phone"></i></a>' : '') + '\n                    <i class="fa fa-share-alt action-share" data-id="' + data.id + '"></i>\n                  </div>\n                </div>\n                <div class="result-actions">\n                  ' + (data.donatelink ? '<a target="_blank" href="' + data.donatelink + '">Donate</a>' : '') + '\n                  ' + (data.volunteerlink ? '<a target="_blank" href="' + data.volunteerlink + '">Volunteer</a>' : '') + '\n                  ' + (data.contributelink ? '<a target="_blank" href="' + data.contributelink + '">Contribute</a>' : '') + '\n                  ' + (data.joblink ? '<a target="_blank" href="' + data.joblink + '">Apply</a>' : '') + '\n                </div>\n            </div>\n            <div class="result-sharing"></div>\n        </li>';
+	    }
 	  },
 	
 	  rating: function rating(_rating) {
@@ -14489,4 +14507,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=main.bundle.js.map
+//# sourceMappingURL=bibliography.bundle.js.map
