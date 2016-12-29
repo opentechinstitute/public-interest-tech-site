@@ -6,6 +6,16 @@ const render = {
     var ifdead = "";
     if (data.dead == true) {
       var ifdead = "dead";
+      var tense = "was";
+    }
+    else {
+      var tense = "is";
+    }
+    if (data.services.length > 0) {
+      var ifaccepting = " that accepts";
+    }
+    else {
+      var ifaccepting = "";
     }
     if (data.descriptionlength < 20 || data.descriptionlength > 100) {
       return
@@ -18,7 +28,7 @@ const render = {
               <p class="result-description">${util.truncate(data.description, 132)}</p>
             </div>
             <div class="result-info ${ifdead}">
-                <h3><a href="${data.website ? data.website : '#'}" target="_blank">${data.name}</a> is ${data.whatisit} ${util.joinAnd(_.map(data.services, s => `<span class="result-service">${s.toLowerCase().replace('esl', 'ESL')}</span>`))}${data.additionalServices.length > 0 ? ' help' : ''}.</h3>
+                <h3><a href="${data.website ? data.website : '#'}" target="_blank">${data.name}</a> ${tense} ${data.whatisit}${ifaccepting}${util.joinAnd(_.map(data.services, s => ` <span class="result-service">${s.toLowerCase().replace('esl', 'ESL')}</span>`))}${data.additionalServices.length > 0 ? '' : ''}.</h3>
                 <div class="result-meta">
                   <div class="result-meta-info">
                     ${data.state ? `<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="${data.state}">${data.state}</span></h5>` : ''}
