@@ -501,9 +501,11 @@ footer {
   cursor: pointer; }
 
 .dead {
-  background: #ddd;
-  color: #555;
-  border-color: #555; }
+  background: #fcfced;
+  color: #c39979;
+  border-color: #c39979; }
+  .dead h2, .dead h3, .dead a, .dead a:visited, .dead .result-description, .dead p {
+    color: #c39979; }
 
 @media screen and (max-width: 990px) {
   .result {
