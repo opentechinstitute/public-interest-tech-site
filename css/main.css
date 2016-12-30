@@ -3,8 +3,7 @@
  * v2.0 | 20110126
  * License: none (public domain) */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
-@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro");
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata|Raleway|Space+Mono|Source+Sans+Pro|Source+Code+Pro");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, button {
   margin: 0;
@@ -85,7 +84,7 @@ html {
   font-family: "Source Sans Pro", "Montserrat", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Souce Code Pro", "Inconsolata", "Courier", monospace; }
+  font-family: "Space Mono", "Inconsolata", "Courier", monospace; }
 
 main {
   min-height: 100vh;
@@ -128,7 +127,7 @@ b {
     font-size: 12px; }
 
 .filters-all {
-  background: #389da2;
+  background: #319282;
   color: #fff;
   padding: 1em 0; }
   .filters-all button {
@@ -139,7 +138,7 @@ b {
       background: #f8e30d;
       color: #fff; }
     .filters-all button.selected {
-      background: #389da2;
+      background: #319282;
       color: #fff; }
     .filters-all button:disabled {
       opacity: 0.6; }
@@ -161,7 +160,7 @@ b {
   margin: 0 0 2em 0; }
   .search-wrapper:before {
     font-family: "FontAwesome";
-    color: #389da2;
+    color: #319282;
     position: absolute;
     top: 0.3em;
     left: 0.5em;
@@ -171,11 +170,11 @@ b {
 a, a:visited {
   color: #000; }
   a:hover, a:visited:hover {
-    color: #389da2; }
+    color: #319282; }
 
 header {
   color: #444;
-  background: #72cace;
+  background: #5fcab8;
   background-size: cover;
   background-position: top center; }
   header h1 a, header h1 a:visited, header h1 a:hover {
@@ -195,7 +194,7 @@ header {
 .header-bar {
   height: 60px;
   padding: 1em;
-  background-color: #415851;
+  background-color: #5fcab8;
   color: #fdfdf1;
   display: flex;
   position: fixed;
@@ -225,32 +224,45 @@ header {
     line-height: 2.5; }
 
 .title {
-  text-transform: uppercase;
   font-size: 2.8em;
   text-align: center;
   font-weight: bold;
   margin: 3em 0 0.8em 0; }
 
 footer {
-  background: #415851;
-  color: #fff;
-  padding: 0.5em 1em;
+  background: #fff;
+  color: #415851;
+  padding: 2em 3em;
   display: flex;
-  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1; }
+  footer h2 {
+    font-size: 1.4em; }
+  footer p {
+    line-height: 140%; }
   footer a, footer a:visited {
-    color: #fff;
+    color: #5fcab8;
     text-decoration: none; }
     footer a:hover, footer a:visited:hover {
-      color: #fff;
+      color: #319282;
       text-decoration: underline; }
   footer img {
-    width: 42px;
+    height: 50px;
     vertical-align: middle;
     margin-right: 0.5em; }
+  footer section {
+    width: 100%;
+    margin: 0;
+    padding: 0 0 0 3em;
+    text-align: left; }
+    footer section li {
+      float: left; }
+  footer .core-team {
+    height: 40%; }
+  footer .partners {
+    height: 60%; }
   footer .footer-left span, footer .footer-left a,
   footer .footer-right span,
   footer .footer-right a {
@@ -331,7 +343,7 @@ footer {
 .result {
   display: inline-block;
   width: 32.9%;
-  border: 4px solid #389da2;
+  border: 4px solid #319282;
   text-align: center;
   padding: 2em 1.2em 3em 1.2em;
   margin: 0.4em 0 0 0;
@@ -341,13 +353,12 @@ footer {
   .result a, .result a:visited {
     color: #fff; }
     .result a:hover, .result a:visited:hover {
-      color: #389da2; }
+      color: #319282; }
   .result h2 {
     font-size: 1.6em;
     letter-spacing: 0.1em;
     padding: 0 0 0.5em 0;
-    color: #389da2;
-    text-transform: uppercase;
+    color: #319282;
     border-bottom: 1px solid #ddd;
     height: 4.4em;
     line-height: 4.4em;
@@ -366,7 +377,7 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #389da2;
+  background: #319282;
   color: #fff;
   padding: 1.5em;
   text-align: left; }
@@ -435,7 +446,7 @@ footer {
     display: block;
     flex: 1;
     text-align: center;
-    background: #72cace;
+    background: #5fcab8;
     text-decoration: none;
     padding: 1em; }
     .result-actions a:hover {
@@ -453,13 +464,13 @@ footer {
 
 .result-meta-share {
   font-size: 1.2em;
-  color: #389da2;
+  color: #319282;
   float: right;
   width: 30%;
   text-align: right;
   padding-top: 0.2em; }
   .result-meta-share a, .result-meta-share a:visited {
-    color: #389da2; }
+    color: #319282; }
   .result-meta-share i {
     background: #fff;
     padding: 0.45em 0.5em;
@@ -491,7 +502,7 @@ footer {
     .result-sharing li a, .result-sharing li a:visited {
       display: block;
       padding: 1em 1.2em;
-      background: #389da2;
+      background: #319282;
       color: #fff; }
       .result-sharing li a:hover, .result-sharing li a:visited:hover {
         background: #f8e30d;
@@ -527,7 +538,7 @@ footer {
   border-bottom: 1px solid #d7d7d7; }
   .about-intro a, .about-intro a:visited, .faq a, .faq a:visited, .resources a, .resources a:visited {
     text-decoration: none;
-    color: #389da2;
+    color: #319282;
     font-weight: bold; }
   .about-intro p, .faq p, .resources p {
     margin: 0 0 1.5em 0;

@@ -1,18 +1,17 @@
 @import reset
 @import fonts
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700')
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro')
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro')
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Raleway|Space+Mono|Source+Sans+Pro|Source+Code+Pro')
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
 
 $secondaryColor: #f8e30d // Super bright accent yellow
-$altColor: #72cace // A bright, but friendly and approachable teal-blue
+$altColor: #5fcab8 //bright teal //#9c6dce //bright purple //#72cace // A bright, but friendly and approachable teal-blue
 $primaryColor: darken($altColor, 20%) //#c95e31 // Red-orange: powerful and says we mean business. Could be brighter?
 $altSecondaryColor: #f5743d // brighter red-orange
 $white: #fdfdf1 // A warm off-white: 
 $black: #415851 // A cool, dark grey
 $primaryFont: 'Source Sans Pro', 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
-$headerFont: 'Souce Code Pro', 'Inconsolata', 'Courier', monospace
+$headerFont: 'Space Mono', 'Inconsolata', 'Courier', monospace
 
 *
   -moz-box-sizing: border-box
@@ -146,7 +145,7 @@ header
 .header-bar
   height: 60px
   padding: 1em
-  background-color: $black
+  background-color: $altColor
   color: $white
   display: flex
   position: fixed
@@ -176,32 +175,49 @@ header
     line-height: 2.5
 
 .title
-  text-transform: uppercase
+  //text-transform: uppercase
   font-size: 2.8em
   text-align: center
   font-weight: bold
   margin: 3em 0 0.8em 0
 
 footer
-  background: $black
-  color: #fff
-  padding: 0.5em 1em
+  background: #fff
+  color: $black
+  padding: 2em 3em
   display: flex
-  position: fixed
+  //position: fixed
   bottom: 0
   left: 0
   right: 0
   z-index: 1
+  h2
+    font-size: 1.4em
+  p
+    line-height: 140%
   a, a:visited
-    color: #fff
+    color: $altColor
     text-decoration: none
     &:hover
-      color: #fff
+      color: $primaryColor
       text-decoration: underline
   img
-    width: 42px
+    height: 50px
     vertical-align: middle
     margin-right: 0.5em
+    .logo
+  section 
+    width: 100%
+    margin: 0
+    padding: 0 0 0 3em
+    text-align: left
+    li 
+      float: left
+  .core-team
+    height: 40%
+  .partners
+    height: 60%
+    
   .footer-left,
   .footer-right
     span, a
