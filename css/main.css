@@ -232,7 +232,7 @@ header {
 footer {
   background: #fff;
   color: #415851;
-  padding: 2em 3em;
+  padding: 3em 4em;
   display: flex;
   bottom: 0;
   left: 0;
@@ -338,7 +338,7 @@ footer {
       text-align: center; } }
 .results {
   margin: 2em auto 0em auto;
-  padding-bottom: 8em; }
+  padding-bottom: 3em; }
 
 .result {
   display: inline-block;
