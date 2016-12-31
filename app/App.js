@@ -37,8 +37,8 @@ class App {
         obj.id = i;
         obj.whatisit = obj.whatisit;
         obj.rating = util.parseRating(obj.charitynavigatorrating);
-        obj.deductible = util.parseBool(obj.taxdeductibleyn);
-        obj.accredited = util.parseBool(obj.accreditedbusinessyn);
+        //obj.deductible = util.parseBool(obj.taxdeductibleyn);
+        //obj.accredited = util.parseBool(obj.accreditedbusinessyn);
         obj.categories = _.compact([obj.category1, obj.category2, obj.category3]);
         obj.subcategories = _.compact([obj.subcategory1, obj.subcategory2]);
         obj.additionalServices = _.compact([obj.filter1, obj.filter2, obj.filter3]);
@@ -48,7 +48,7 @@ class App {
         obj.volunteerlink = util.trim(obj.volunteerlink);
         obj.contributelink = util.trim(obj.contributelink);
         obj.joblink = util.trim(obj.joblink);
-        obj.number = util.parseNumber(obj.numbers);
+        //obj.number = util.parseNumber(obj.numbers);
         obj.dead = util.parseBool(obj.dead);
         obj.services = [];
         if (obj.donatelink) obj.services.push('donations');
@@ -56,6 +56,7 @@ class App {
         if (obj.contributelink) obj.services.push('open source contributions');
         if (obj.joblink) obj.services.push('applications');
         obj.services = obj.services.concat(obj.additionalServices);
+        obj.state = obj.location; //a cheat to make it so spreadsheet header can be "location" while variable is still "state" (leftover from togetherlist)
 
         // console.log(obj); // debug
 
@@ -67,13 +68,13 @@ class App {
 
   updateAvailableFilters(results) {
     var filters = [];
-    $('[data-flag=deductible]').attr('disabled', !_.some(results, r => r.deductible));
-    $('[data-flag=accredited]').attr('disabled', !_.some(results, r => r.accredited));
+    //$('[data-flag=deductible]').attr('disabled', !_.some(results, r => r.deductible));
+    //$('[data-flag=accredited]').attr('disabled', !_.some(results, r => r.accredited));
     $('.filters-services button').each(function() {
-      var service = $(this).data('service');
-      $(this).attr('disabled',
-        !_.some(results, r => _.contains(r.services, service)));
-    });
+       var service = $(this).data('service');
+       $(this).attr('disabled',
+         !_.some(results, r => _.contains(r.services, service)));
+     });
     $('.filters-subcategories button').each(function() {
       var cat = $(this).data('subcategory');
       $(this).attr('disabled',

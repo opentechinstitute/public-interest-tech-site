@@ -255,7 +255,6 @@ footer {
   footer section {
     width: 100%;
     margin: 0;
-    padding: 0 0 0 3em;
     text-align: left; }
     footer section li {
       float: left; }
@@ -263,12 +262,18 @@ footer {
     height: 40%; }
   footer .partners {
     height: 60%; }
+  footer .about {
+    height: 80%; }
+  footer .social {
+    height: 20%;
+    padding: 1em 0 0 0; }
   footer .footer-left span, footer .footer-left a,
   footer .footer-right span,
   footer .footer-right a {
     margin: 0 0.5em; }
   footer .footer-right {
-    text-align: right; }
+    text-align: right;
+    padding-left: 3em; }
   footer .copyright {
     text-align: center; }
   footer .footer-left,
@@ -513,8 +518,8 @@ footer {
 
 .dead {
   background: #fcfced;
-  color: #c39979;
-  border-color: #c39979; }
+  color: #d3b49c;
+  border-color: #d3b49c; }
   .dead h2, .dead h3, .dead a, .dead a:visited, .dead a:hover, .dead a:visited:hover, .dead .result-description, .dead p {
     color: #c39979; }
 
