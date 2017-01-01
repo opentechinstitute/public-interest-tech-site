@@ -6,7 +6,7 @@ import search from './Search';
 import sheet from './Sheet';
 
 const SPREADSHEET_ID = '1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4'; //'1kq6z9cEeqqGL5R5mdclkj5HjD-w9dvL8xCYmhG1UziQ';
-const NO_RESULTS_COPY = "Can't find the organization you're looking for? Let us know by emailing maya@opentechinstitute.org"
+const NO_RESULTS_COPY = "Nothing found :( <br> Think this is an error? Let us know by emailing maya@opentechinstitute.org"
 
 class App {
   constructor() {
