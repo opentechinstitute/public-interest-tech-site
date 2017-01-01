@@ -11983,7 +11983,7 @@
 	    if (data.descriptionlength < 20 || data.descriptionlength > 100) {
 	      return;
 	    } else {
-	      return '\n        <li class="result ' + ifdead + '">\n            <div class="result-preview">\n              <h2><span>' + _Util2.default.truncate(data.name, 30) + '</span></h2>\n              <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n            </div>\n            <div class="result-info ' + ifdead + '">\n                <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> ' + tense + ' ' + data.whatisit + ifaccepting + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
+	      return '\n        <li class="result ' + ifdead + '">\n            <div class="result-preview">\n              <h2><span>' + _Util2.default.truncate(data.name, 40) + '</span></h2>\n              <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n            </div>\n            <div class="result-info ' + ifdead + '">\n                <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> ' + tense + ' ' + data.whatisit + ifaccepting + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
 	        return ' <span class="result-service">' + s.toLowerCase().replace('esl', 'ESL') + '</span>';
 	      })) + (data.additionalServices.length > 0 ? '' : '') + '.</h3>\n                <div class="result-meta">\n                  <div class="result-meta-info">\n                    ' + (data.state ? '<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>' : '') + '\n                    <h5>' + data.categories.join(', ') + '</h5>\n                  </div>\n                  <div class="result-meta-share">\n                    ' + (data.number ? '<a href="tel:' + data.number + '"><i class="fa fa-phone"></i></a>' : '') + '\n                    <i class="fa fa-share-alt action-share" data-id="' + data.id + '"></i>\n                  </div>\n                </div>\n                <div class="result-actions">\n                  ' + (data.donatelink ? '<a target="_blank" href="' + data.donatelink + '">Donate</a>' : '') + '\n                  ' + (data.volunteerlink ? '<a target="_blank" href="' + data.volunteerlink + '">Volunteer</a>' : '') + '\n                  ' + (data.contributelink ? '<a target="_blank" href="' + data.contributelink + '">Contribute</a>' : '') + '\n                  ' + (data.joblink ? '<a target="_blank" href="' + data.joblink + '">Apply</a>' : '') + '\n                </div>\n            </div>\n            <div class="result-sharing"></div>\n        </li>';
 	    }
@@ -14244,8 +14244,8 @@
 	          obj.id = i;
 	          obj.whatisit = obj.whatisit;
 	          obj.rating = _Util2.default.parseRating(obj.charitynavigatorrating);
-	          obj.deductible = _Util2.default.parseBool(obj.taxdeductibleyn);
-	          obj.accredited = _Util2.default.parseBool(obj.accreditedbusinessyn);
+	          //obj.deductible = util.parseBool(obj.taxdeductibleyn);
+	          //obj.accredited = util.parseBool(obj.accreditedbusinessyn);
 	          obj.categories = _underscore2.default.compact([obj.category1, obj.category2, obj.category3]);
 	          obj.subcategories = _underscore2.default.compact([obj.subcategory1, obj.subcategory2]);
 	          obj.additionalServices = _underscore2.default.compact([obj.filter1, obj.filter2, obj.filter3]);
@@ -14255,7 +14255,7 @@
 	          obj.volunteerlink = _Util2.default.trim(obj.volunteerlink);
 	          obj.contributelink = _Util2.default.trim(obj.contributelink);
 	          obj.joblink = _Util2.default.trim(obj.joblink);
-	          obj.number = _Util2.default.parseNumber(obj.numbers);
+	          //obj.number = util.parseNumber(obj.numbers);
 	          obj.dead = _Util2.default.parseBool(obj.dead);
 	          obj.services = [];
 	          if (obj.donatelink) obj.services.push('donations');
@@ -14263,6 +14263,7 @@
 	          if (obj.contributelink) obj.services.push('open source contributions');
 	          if (obj.joblink) obj.services.push('applications');
 	          obj.services = obj.services.concat(obj.additionalServices);
+	          obj.state = obj.location; //a cheat to make it so spreadsheet header can be "location" while variable is still "state" (leftover from togetherlist)
 	
 	          // console.log(obj); // debug
 	
@@ -14275,12 +14276,8 @@
 	    key: 'updateAvailableFilters',
 	    value: function updateAvailableFilters(results) {
 	      var filters = [];
-	      (0, _jquery2.default)('[data-flag=deductible]').attr('disabled', !_underscore2.default.some(results, function (r) {
-	        return r.deductible;
-	      }));
-	      (0, _jquery2.default)('[data-flag=accredited]').attr('disabled', !_underscore2.default.some(results, function (r) {
-	        return r.accredited;
-	      }));
+	      //$('[data-flag=deductible]').attr('disabled', !_.some(results, r => r.deductible));
+	      //$('[data-flag=accredited]').attr('disabled', !_.some(results, r => r.accredited));
 	      (0, _jquery2.default)('.filters-services button').each(function () {
 	        var service = (0, _jquery2.default)(this).data('service');
 	        (0, _jquery2.default)(this).attr('disabled', !_underscore2.default.some(results, function (r) {
