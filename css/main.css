@@ -81,7 +81,8 @@ button {
   box-sizing: border-box; }
 
 html {
-  font-family: "Source Sans Pro", "Montserrat", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
+  font-family: "Source Sans Pro", "Montserrat", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #415851; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Space Mono", "Inconsolata", "Courier", monospace; }

@@ -14206,7 +14206,7 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var SPREADSHEET_ID = '1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4'; //'1kq6z9cEeqqGL5R5mdclkj5HjD-w9dvL8xCYmhG1UziQ';
-	var NO_RESULTS_COPY = "Can't find the organization you're looking for? Let us know by emailing maya@opentechinstitute.org";
+	var NO_RESULTS_COPY = "Nothing found :( <br> Think this is an error? Let us know by emailing maya@opentechinstitute.org";
 	
 	var App = function () {
 	  function App() {
