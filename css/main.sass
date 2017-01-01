@@ -24,6 +24,9 @@ html
 h1, h2, h3, h4, h5, h6 
   font-family: $headerFont
 
+h2
+  font-size: 1.4em
+
 main
   min-height: 100vh
   position: relative
@@ -145,7 +148,7 @@ header
 .header-bar
   height: 60px
   padding: 1em
-  background-color: $altColor
+  background-color: $primaryColor
   color: $white
   display: flex
   position: fixed
@@ -154,32 +157,40 @@ header
   right: 0
   z-index: 1
   a, a:visited
-    color: #fff
+    color: $white
     text-decoration: none
     &:hover
-      color: #fff
+      color: $white
       text-decoration: underline
   img
     width: 42px
     vertical-align: middle
     margin-right: 0.5em
+  .submit-button, .submit-button:visited
+    padding: 0.5em
+    border: 2px solid $white
+    &:hover
+      background-color: lighten($altColor, 8%)
+      border: 2px solid $white
+      text-decoration: none
   .header-bar-left,
   .header-bar-right
     span, a
       margin: 0 0.5em
   .header-bar-right
     text-align: right
+    right: 0
   .header-bar-left,
   .header-bar-right,
     flex: 1
     line-height: 2.5
 
 .title
-  //text-transform: uppercase
   font-size: 2.8em
   text-align: center
   font-weight: bold
   margin: 3em 0 0.8em 0
+  line-height: 135%
 
 footer
   background: #fff
@@ -191,8 +202,6 @@ footer
   left: 0
   right: 0
   z-index: 1
-  h2
-    font-size: 1.4em
   p
     line-height: 140%
   a, a:visited

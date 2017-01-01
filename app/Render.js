@@ -24,7 +24,7 @@ const render = {
       return `
         <li class="result ${ifdead}">
             <div class="result-preview">
-              <h2><span>${util.truncate(data.name, 30)}</span></h2>
+              <h2><span>${util.truncate(data.name, 40)}</span></h2>
               <p class="result-description">${util.truncate(data.description, 132)}</p>
             </div>
             <div class="result-info ${ifdead}">
