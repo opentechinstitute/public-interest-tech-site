@@ -201,6 +201,7 @@ header {
 .header-bar {
   height: 60px;
   padding: 1em;
+  background-color: #319282;
   color: #415851;
   display: flex;
   top: 0;
