@@ -22,8 +22,8 @@ const render = {
     // }
     // else {
       return `
-        <li class="result">
-            <div class="result-preview">
+        <li class="resource">
+            <div class="resource-preview">
               <h2><span>${util.truncate(data.citation, 40)}</span></h2>
               <p class="result-description">${util.truncate(data.description, 132)}</p>
             </div>

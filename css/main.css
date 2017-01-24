@@ -579,6 +579,30 @@ footer {
 
   .results {
     padding-bottom: 12em; } }
+.resource {
+  width: 100%;
+  line-height: 1.4em;
+  padding: 1em 0;
+  border-bottom: #415851 solid 2px; }
+  .resource a, .resource a:hover, .resource a:active {
+    text-decoration: none; }
+  .resource a:hover {
+    color: #17463e; }
+  .resource h1 {
+    color: #319282;
+    font-weight: 700;
+    font-size: 1.2em;
+    line-height: 1.6em; }
+  .resource h2 {
+    font-size: 1em; }
+  .resource h3 {
+    font-style: italic; }
+
+.annotation {
+  background-color: #fbf5e4;
+  padding: 2em;
+  margin: 1em 0; }
+
 .about-title {
   text-align: left; }
 

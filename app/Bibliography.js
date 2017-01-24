@@ -2,7 +2,7 @@ import $ from 'jquery';
 import _ from 'underscore';
 import util from './Util';
 import render from './Bibliography-render';
-import search from './Search';
+import search from './Bibliography-search';
 import sheet from './Sheet';
 
 const SPREADSHEET_ID = '1056cinZ2uYjomUOTF70unqeUjYkYc-z3Usmsq0_9fU4';//'1056cinZ2uYjomUOTF70unqeUjYkYc-z3Usmsq0_9fU4'; //'1kq6z9cEeqqGL5R5mdclkj5HjD-w9dvL8xCYmhG1UziQ';
