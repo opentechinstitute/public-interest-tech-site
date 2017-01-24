@@ -8,6 +8,7 @@ const search = {
       this.field('body');
       this.field('state');
       this.field('categories');
+      this.field('annotation');
       this.ref('id');
     });
 
@@ -17,7 +18,8 @@ const search = {
         name: item.name,
         body: item.description,
         categories: item.categories.join(', '),
-        state: item.state
+        state: item.state,
+        annotation: item.annotation
       });
     });
   },
