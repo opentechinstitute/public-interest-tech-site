@@ -224,11 +224,20 @@ header {
       background-color: #7ed4c6;
       border: 2px solid #fdfdf1;
       text-decoration: none; }
+  .header-bar .main-nav {
+    height: 100%; }
   .header-bar nav ul {
+    height: 100%;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    /* This aligns items to the end line on main-axis */
+    justify-content: flex-start; }
   .header-bar nav li {
-    display: inline; }
+    padding: 2em 1em; }
+    .header-bar nav li:first-child {
+      padding-left: 0; }
   .header-bar .header-bar-left,
   .header-bar .header-bar-right {
     line-height: 2.5; }
@@ -243,7 +252,7 @@ header {
     width: 100%;
     position: relative; }
   .header-bar .header-bar-bottom {
-    height: 5em;
+    height: 5.5em;
     width: 100%; }
 
 .title {

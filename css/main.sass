@@ -181,11 +181,20 @@ header
       background-color: lighten($altColor, 8%)
       border: 2px solid $white
       text-decoration: none
+  .main-nav 
+    height: 100%
   nav ul 
+    height: 100%
     margin: 0
     padding: 0
+    display: flex
+    flex-flow: row wrap
+    /* This aligns items to the end line on main-axis */
+    justify-content: flex-start
   nav li
-    display: inline
+    padding: 2em 1em
+    &:first-child
+      padding-left: 0
   .header-bar-left,
   .header-bar-right,
     line-height: 2.5
@@ -201,7 +210,7 @@ header
     position: relative
     //padding: 4em 4em 0 4em
   .header-bar-bottom
-    height: 5em
+    height: 5.5em
     width: 100%
     //padding: 0 5em
 
