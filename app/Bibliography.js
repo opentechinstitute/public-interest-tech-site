@@ -31,7 +31,10 @@ class Bib {
         var obj = sheet.parseRow(row);
 
         // skip if no name
-        if (!obj.name) return;
+        //if (!obj.name) return;
+
+        // skip if not ready
+        if (obj.readyyn !== 'y') return;
 
         // some extra parsing
         obj.id = i;
