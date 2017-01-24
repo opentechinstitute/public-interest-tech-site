@@ -124,8 +124,10 @@ b {
   margin: 0.5em 0; }
   .filters button {
     flex: 1;
+    border: #fefef1 solid;
     padding: 1.2em 0.4em 1em 0.4em;
-    font-size: 0.8em;
+    min-width: 10%;
+    font-size: 1em;
     text-align: center;
     color: #444;
     cursor: pointer; }
@@ -142,17 +144,16 @@ b {
   color: #fff;
   padding: 1em 0; }
   .filters-all button {
-    background: #fff;
-    color: #343434;
+    color: #fefef1;
     margin: 0 0.25em 0.5em 0.25em; }
     .filters-all button:hover {
-      background: #f8e30d;
-      color: #fff; }
+      background: #fefef1;
+      color: #319282; }
     .filters-all button.selected {
-      background: #319282;
-      color: #fff; }
+      background: #fefef1;
+      color: #319282; }
     .filters-all button:disabled {
-      opacity: 0.6; }
+      opacity: 0.5; }
   .filters-all .filters {
     flex-wrap: wrap;
     -webkit-flex-wrap: wrap; }

@@ -63,8 +63,10 @@ b
   margin: 0.5em 0
   button
     flex: 1
+    border: $white solid
     padding: 1.2em 0.4em 1em 0.4em
-    font-size: 0.8em
+    min-width: 10%
+    font-size: 1em
     text-align: center
     color: #444
     cursor: pointer
@@ -92,17 +94,17 @@ b
   color: #fff
   padding: 1em 0
   button
-    background: #fff
-    color: #343434
+    //background: #fff
+    color: $white
     margin: 0 0.25em 0.5em 0.25em
     &:hover
-      background: $secondaryColor
-      color: #fff
+      background: $white
+      color: $primaryColor
     &.selected
-      background: $primaryColor
-      color: #fff
+      background: $white
+      color: $primaryColor
     &:disabled
-      opacity: 0.6
+      opacity: 0.5
   .filters
     flex-wrap: wrap
     -webkit-flex-wrap: wrap
