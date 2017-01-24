@@ -485,9 +485,9 @@ footer {
   text-transform: uppercase;
   position: absolute;
   display: flex;
-  bottom: -4px;
-  left: -4px;
-  right: -4px; }
+  bottom: 0;
+  left: 0;
+  right: 0; }
   .result-actions a {
     display: block;
     flex: 1;
