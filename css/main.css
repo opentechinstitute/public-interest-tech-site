@@ -215,7 +215,7 @@ header {
     text-decoration: none; }
     .header-bar a:hover, .header-bar a:visited:hover {
       color: #fefef1;
-      text-decoration: underline; }
+      text-decoration: none; }
   .header-bar img {
     width: 42px;
     vertical-align: middle;
@@ -229,6 +229,8 @@ header {
       text-decoration: none; }
   .header-bar .main-nav {
     height: 100%; }
+    .header-bar .main-nav .active {
+      background-color: #85d7c9; }
   .header-bar nav ul {
     height: 100%;
     margin: 0;
@@ -238,9 +240,9 @@ header {
     /* This aligns items to the end line on main-axis */
     justify-content: flex-start; }
   .header-bar nav li {
-    padding: 2em 1em; }
-    .header-bar nav li:first-child {
-      padding-left: 0; }
+    padding: 2em 2em; }
+    .header-bar nav li:hover {
+      background-color: #85d7c9; }
   .header-bar .header-bar-left,
   .header-bar .header-bar-right {
     line-height: 2.5; }

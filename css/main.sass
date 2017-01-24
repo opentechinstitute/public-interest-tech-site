@@ -176,7 +176,7 @@ header
     text-decoration: none
     &:hover
       color: $white
-      text-decoration: underline
+      text-decoration: none
   img
     width: 42px
     vertical-align: middle
@@ -190,6 +190,8 @@ header
       text-decoration: none
   .main-nav 
     height: 100%
+    .active
+      background-color: lighten($altColor, 10%)
   nav ul 
     height: 100%
     margin: 0
@@ -199,9 +201,9 @@ header
     /* This aligns items to the end line on main-axis */
     justify-content: flex-start
   nav li
-    padding: 2em 1em
-    &:first-child
-      padding-left: 0
+    padding: 2em 2em
+    &:hover
+      background-color: lighten($altColor, 10%)
   .header-bar-left,
   .header-bar-right,
     line-height: 2.5
