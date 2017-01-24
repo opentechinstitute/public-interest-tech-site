@@ -3,13 +3,32 @@ import util from './Util';
 
 const render = {
   result: function(data) {
-    return `
+    // var ifdead = "";
+    // if (data.dead == true) {
+    //   var ifdead = "dead";
+    //   var tense = "was";
+    // }
+    // else {
+    //   var tense = "is";
+    // }
+    // if (data.services.length > 0) {
+    //   var ifaccepting = " that accepts";
+    // }
+    // else {
+    //   var ifaccepting = "";
+    // }
+    // if (data.descriptionlength < 20 || data.descriptionlength > 100) {
+    //   return
+    // }
+    // else {
+      return `
         <li class="result">
             <div class="result-preview">
-              <h2><span>${util.truncate(data.name, 40)}</span></h2>
+              <h2><span>${util.truncate(data.citation, 40)}</span></h2>
               <p class="result-description">${util.truncate(data.description, 132)}</p>
             </div>
         </li>`;
+    // }
   },
 
   rating: function(rating) {

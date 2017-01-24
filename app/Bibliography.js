@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from './Util';
-import render from './Render';
+import render from './Bibliography-render';
 import search from './Search';
 import sheet from './Sheet';
 
