@@ -44,10 +44,10 @@ class Bib {
         obj.additionalServices = _.compact([obj.filter1, obj.filter2, obj.filter3]);
         obj.description = obj.description100characters;
         obj.descriptionlength = obj.descriptionlength;
-        obj.donatelink = util.trim(obj.donatelink);
-        obj.volunteerlink = util.trim(obj.volunteerlink);
-        obj.contributelink = util.trim(obj.contributelink);
-        obj.joblink = util.trim(obj.joblink);
+        obj.author = obj.author;
+        obj.date = obj.date;
+        obj.annotation = obj.annotation;
+        obj.annotationauthor = obj.annotationauthor;
         //obj.number = util.parseNumber(obj.numbers);
         obj.dead = util.parseBool(obj.dead);
         obj.services = [];

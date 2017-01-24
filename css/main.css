@@ -587,11 +587,11 @@ footer {
   .resource a, .resource a:hover, .resource a:active {
     text-decoration: none; }
   .resource a:hover {
-    color: #17463e; }
+    color: #5fcab8; }
   .resource h1 {
     color: #319282;
     font-weight: 700;
-    font-size: 1.2em;
+    font-size: 1.4em;
     line-height: 1.6em; }
   .resource h2 {
     font-size: 1em; }
@@ -602,31 +602,37 @@ footer {
   background-color: #fbf5e4;
   padding: 2em;
   margin: 1em 0; }
+  .annotation h4 {
+    font-style: italic;
+    font-weight: 700;
+    padding: 1em 0 0 0;
+    text-align: right;
+    line-height: 1.3em; }
 
 .about-title {
   text-align: left; }
 
-.about-intro, .faq, .resources {
+.about-intro, .faq {
   display: flex;
   border-bottom: 1px solid #d7d7d7; }
-  .about-intro a, .about-intro a:visited, .faq a, .faq a:visited, .resources a, .resources a:visited {
+  .about-intro a, .about-intro a:visited, .faq a, .faq a:visited {
     text-decoration: none;
     color: #319282;
     font-weight: bold; }
-  .about-intro p, .faq p, .resources p {
+  .about-intro p, .faq p {
     margin: 0 0 1.5em 0;
     line-height: 1.6; }
-  .about-intro article, .faq article, .resources article {
+  .about-intro article, .faq article {
     flex: 4;
     font-size: 1.3em;
     padding: 0 3em 0 0; }
-    .about-intro article p, .faq article p, .resources article p {
+    .about-intro article p, .faq article p {
       font-size: 0.8em;
       color: #767676; }
-      .about-intro article p:first-child, .faq article p:first-child, .resources article p:first-child {
+      .about-intro article p:first-child, .faq article p:first-child {
         color: #555;
         font-size: 1em; }
-  .about-intro aside, .faq aside, .resources aside {
+  .about-intro aside, .faq aside {
     flex: 2;
     color: #555; }
 
@@ -635,7 +641,7 @@ footer {
 .about-intro article:last-of-type {
   margin-bottom: 3em; }
 
-.about-intro, .about-letter, .faq, .resources {
+.about-intro, .about-letter, .faq {
   padding: 3em 2em; }
 
 .about-letter {
@@ -646,10 +652,10 @@ footer {
     color: #555;
     line-height: 1.6; }
 
-.faq aside li, .resources aside li {
+.faq aside li {
   font-size: 1.2em;
   margin: 0 0 2em 0; }
-.faq .back-to-top, .faq .back-to-top:visited, .resources .back-to-top, .resources .back-to-top:visited {
+.faq .back-to-top, .faq .back-to-top:visited {
   font-weight: normal;
   font-size: 0.8em;
   color: #aaa;
@@ -682,9 +688,9 @@ footer {
   color: #555; }
 
 @media screen and (max-width: 620px) {
-  .about-intro, .faq, .resources {
+  .about-intro, .faq {
     display: block; }
-    .about-intro article, .faq article, .resources article {
+    .about-intro article, .faq article {
       padding: 0 0 2em 0; }
 
   .about-title {

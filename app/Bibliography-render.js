@@ -3,6 +3,27 @@ import util from './Util';
 
 const render = {
   result: function(data) {
+    var resource = '<li class="resource"><article><a href="' + data.url + '"><h1>' + data.name + '</h1></a>';
+    if (data.author.length > 0) {
+      resource = resource + '<h2>by ' + data.author + '</h2>';
+    }
+    if (data.whatisit.length > 0) {
+      resource = resource + '<h3>' + data.whatisit + '</h3>';
+    }
+    if (data.date.length > 0) {
+      resource = resource + '<h3>' + data.date + '</h3>';
+    }
+    if (data.categories.length > 0) {
+      resource = resource + '<h3>Tags: ' + data.categories.join(', ') + '</h3>';
+    }
+    if (data.annotation.length > 0) {
+      resource = resource + '<aside class="annotation"><p>' + data.annotation + '</p>';
+      if (data.annotationauthor.length > 0) {
+        resource = resource + '<h4>—' + data.annotationauthor + '</h4>';
+      }
+      resource = resource + '</aside';
+    }
+    resource = resource + '</article></li>';
     // var ifdead = "";
     // if (data.dead == true) {
     //   var ifdead = "dead";
@@ -21,13 +42,19 @@ const render = {
     //   return
     // }
     // else {
-      return `
-        <li class="resource">
-            <div class="resource-preview">
-              <h2><span>${util.truncate(data.citation, 40)}</span></h2>
-              <p class="result-description">${util.truncate(data.description, 132)}</p>
-            </div>
-        </li>`;
+      return resource;
+        // '<li>
+        //     <article class="resource">
+        //         <a href="${data.url}"><h1>${data.name}</h1></a>
+        //         <h2>by ${data.author}</h2>
+        //         <h3>${data.whatisit}, ${data.date}</h3>
+        //         <h3>Tags: ${data.categories.join(', ')}</h3>
+        //         <aside class="annotation">  
+        //             <p>${data.annotation}</p>
+        //             <h4>—${data.annotationauthor}</h4>
+        //         </aside>
+        //     </article>
+        // </li> `;
     // }
   },
 
