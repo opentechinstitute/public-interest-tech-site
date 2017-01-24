@@ -239,8 +239,9 @@ header {
   .header-bar .header-bar-left {
     flex: 1; }
   .header-bar .header-bar-top {
-    height: 12em;
-    width: 100%; }
+    height: 11em;
+    width: 100%;
+    position: relative; }
   .header-bar .header-bar-bottom {
     height: 5em;
     width: 100%; }
@@ -251,7 +252,9 @@ header {
   line-height: 135%;
   color: #fdfdf1;
   border-bottom: 1px #fdfdf1 solid;
-  padding-bottom: 0.5em; }
+  padding-bottom: 0.5em;
+  position: absolute;
+  bottom: 0; }
 
 footer {
   background: #fff;
