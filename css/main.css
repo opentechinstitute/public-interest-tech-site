@@ -97,7 +97,7 @@ h2 {
 main {
   min-height: 100vh;
   position: relative;
-  background: #fdfdf1; }
+  background: #fefef1; }
 
 .clear {
   clear: both; }
@@ -210,10 +210,10 @@ header {
   right: 0;
   z-index: 1; }
   .header-bar a, .header-bar a:visited {
-    color: #fdfdf1;
+    color: #fefef1;
     text-decoration: none; }
     .header-bar a:hover, .header-bar a:visited:hover {
-      color: #fdfdf1;
+      color: #fefef1;
       text-decoration: underline; }
   .header-bar img {
     width: 42px;
@@ -221,10 +221,10 @@ header {
     margin-right: 0.5em; }
   .header-bar .submit-button, .header-bar .submit-button:visited {
     padding: 0.5em;
-    border: 2px solid #fdfdf1; }
+    border: 2px solid #fefef1; }
     .header-bar .submit-button:hover, .header-bar .submit-button:visited:hover {
       background-color: #7ed4c6;
-      border: 2px solid #fdfdf1;
+      border: 2px solid #fefef1;
       text-decoration: none; }
   .header-bar .main-nav {
     height: 100%; }
@@ -261,8 +261,8 @@ header {
   font-size: 2.8em;
   text-align: left;
   line-height: 135%;
-  color: #fdfdf1;
-  border-bottom: 1px #fdfdf1 solid;
+  color: #fefef1;
+  border-bottom: 1px #fefef1 solid;
   padding-bottom: 0.5em;
   position: absolute;
   bottom: 0; }
@@ -386,11 +386,11 @@ footer {
 
 .result {
   display: inline-block;
-  width: 31.5%;
-  background-color: #eee;
+  width: 31.2%;
+  background-color: #fbf5e4;
   text-align: center;
   padding: 1.5em 1.2em;
-  margin: 0.5em;
+  margin: 0.7%;
   position: relative;
   vertical-align: top;
   height: 16em; }
@@ -406,7 +406,7 @@ footer {
     letter-spacing: 0.1em;
     padding: 0 0 0.5em 0;
     color: #319282;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #319282;
     line-height: 4.4em;
     hyphens: auto; }
     .result h2 span {
@@ -466,7 +466,7 @@ footer {
     display: inline-block; }
 
 .result-meta {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid #fefef1;
   font-size: 0.7em;
   line-height: 1.5;
   padding: 1em 0; }
@@ -558,7 +558,7 @@ footer {
   cursor: pointer; }
 
 .dead {
-  background: #fcfced;
+  background: #fefeec;
   color: #d3b49c;
   border-color: #d3b49c; }
   .dead h2, .dead h3, .dead a, .dead a:visited, .dead a:hover, .dead a:visited:hover, .dead .result-description, .dead p {
