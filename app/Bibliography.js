@@ -1,12 +1,12 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from './Util';
-import render from './Bibliography-render';
-import search from './Bibliography-search';
+import render from './Render';
+import search from './Search';
 import sheet from './Sheet';
 
-const SPREADSHEET_ID = '1056cinZ2uYjomUOTF70unqeUjYkYc-z3Usmsq0_9fU4';
-const NO_RESULTS_COPY = "Want to suggest something? Email maya@opentechinstitute.org";
+const SPREADSHEET_ID = '1056cinZ2uYjomUOTF70unqeUjYkYc-z3Usmsq0_9fU4';//'1056cinZ2uYjomUOTF70unqeUjYkYc-z3Usmsq0_9fU4'; //'1kq6z9cEeqqGL5R5mdclkj5HjD-w9dvL8xCYmhG1UziQ';
+const NO_RESULTS_COPY = "Nothing found :( <br><br> Think this is an error? Let us know by emailing maya@opentechinstitute.org"
 
 class Bib {
   constructor() {
@@ -15,13 +15,13 @@ class Bib {
 
   resetFilters() {
     this.filters = {
-      //flags: [],
-      //rating: -1,
+      flags: [],
+      rating: -1,
       categories: [],
       subcategories: [],
-      //services: [],
+      services: [],
       state: false,
-      //sortByRating: false
+      sortByRating: false
     };
   }
 
@@ -33,27 +33,32 @@ class Bib {
         // skip if no name
         if (!obj.name) return;
 
-        // some extra parsing (that obj name on the right? That comes directly from the text you type in the header row of the spreadsheet)
+        // some extra parsing
         obj.id = i;
-        obj.citation = obj.citation;
-        //obj.rating = util.parseRating(obj.charitynavigatorrating);
+        obj.whatisit = obj.whatisit;
+        obj.rating = util.parseRating(obj.charitynavigatorrating);
         //obj.deductible = util.parseBool(obj.taxdeductibleyn);
         //obj.accredited = util.parseBool(obj.accreditedbusinessyn);
         obj.categories = _.compact([obj.category1, obj.category2, obj.category3]);
         obj.subcategories = _.compact([obj.subcategory1, obj.subcategory2]);
-        //obj.additionalServices = _.compact([obj.filter1, obj.filter2, obj.filter3]);
+        obj.additionalServices = _.compact([obj.filter1, obj.filter2, obj.filter3]);
         obj.description = obj.description100characters;
-        //obj.donatelink = util.trim(obj.donatelink);
-        //obj.volunteerlink = util.trim(obj.volunteerlink);
-        //obj.contributelink = util.trim(obj.contributelink);
+        obj.descriptionlength = obj.descriptionlength;
+        obj.donatelink = util.trim(obj.donatelink);
+        obj.volunteerlink = util.trim(obj.volunteerlink);
+        obj.contributelink = util.trim(obj.contributelink);
+        obj.joblink = util.trim(obj.joblink);
         //obj.number = util.parseNumber(obj.numbers);
-        //obj.services = [];
-        //if (obj.donatelink) obj.services.push('donations');
-        //if (obj.volunteerlink) obj.services.push('volunteers');
-        //if (obj.contributelink) obj.services.push('open source contributions');
-        //obj.services = obj.services.concat(obj.additionalServices);
+        obj.dead = util.parseBool(obj.dead);
+        obj.services = [];
+        if (obj.donatelink) obj.services.push('donations');
+        if (obj.volunteerlink) obj.services.push('volunteers');
+        if (obj.contributelink) obj.services.push('open source contributions');
+        if (obj.joblink) obj.services.push('applications');
+        obj.services = obj.services.concat(obj.additionalServices);
+        obj.state = obj.location; //a cheat to make it so spreadsheet header can be "location" while variable is still "state" (leftover from togetherlist)
 
-        // console.log(obj); // debug
+        console.log(obj); // debug
 
         return obj;
       }).compact().value();
@@ -146,15 +151,15 @@ class Bib {
     });
   }
 
-  // bindClear() {
-  //   $('.clear-filters').on('click', ev => {
-  //     this.results = this.orgs;
-  //     this.resetFilters();
-  //     this.renderResults();
-  //     $('.selected').removeClass('selected');
-  //     $('input[name=search]').val('');
-  //   });
-  // }
+  bindClear() {
+    $('.clear-filters').on('click', ev => {
+      this.results = this.orgs;
+      this.resetFilters();
+      this.renderResults();
+      $('.selected').removeClass('selected');
+      $('input[name=search]').val('');
+    });
+  }
 
   bindSearch() {
     $('input[name=search]').on('keyup', ev => {
@@ -162,13 +167,13 @@ class Bib {
     });
   }
 
-  // bindStateFilter() {
-  //   $('.results').on('click', '.result-state', ev => {
-  //     var state = $(ev.target).data('state');
-  //     this.filters.state = state;
-  //     this.renderResults();
-  //   });
-  // }
+  bindStateFilter() {
+    $('.results').on('click', '.result-state', ev => {
+      var state = $(ev.target).data('state');
+      this.filters.state = state;
+      this.renderResults();
+    });
+  }
 
   bindSearchDropdown() {
     $('.search-dropdown').on('click', 'li', ev => {
@@ -237,12 +242,12 @@ class Bib {
     this.loadSubCategories();
 
     this.bindSearch();
-    // this.bindClear();
+    this.bindClear();
     // this.bindSharing();
     // this.bindRatingFilter();
     this.bindFiltersToggle();
     this.bindSearchDropdown();
-    // this.bindStateFilter();
+    this.bindStateFilter();
     // this.bindFilter('.filters-flags', 'flag', 'flags');
     this.bindFilter('.filters-categories', 'category', 'categories');
     // this.bindFilter('.filters-services', 'service', 'services');
