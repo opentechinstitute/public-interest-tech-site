@@ -1,12 +1,12 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import util from './Util';
-import render from './Render';
-import search from './Search';
+import render from './Bibliography-render';
+import search from './Bibliography-search';
 import sheet from './Sheet';
 
-const SPREADSHEET_ID = '1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4';
-const NO_RESULTS_COPY = "Can't find the organization you're looking for? Help grow our Togetherlist database. Please submit using our <a href='https://docs.google.com/forms/d/e/1FAIpQLScS3scl2_LiNyDk0jf1CCPF9qsZlmrlvTWW_ckMlhGeEL0OXw/viewform?c=0&w=1'>Submissions Form</a>."
+const SPREADSHEET_ID = '1056cinZ2uYjomUOTF70unqeUjYkYc-z3Usmsq0_9fU4';
+const NO_RESULTS_COPY = "Want to suggest something? Email maya@opentechinstitute.org";
 
 class Bib {
   constructor() {
@@ -15,13 +15,13 @@ class Bib {
 
   resetFilters() {
     this.filters = {
-      flags: [],
-      rating: -1,
+      //flags: [],
+      //rating: -1,
       categories: [],
       subcategories: [],
-      services: [],
+      //services: [],
       state: false,
-      sortByRating: false
+      //sortByRating: false
     };
   }
 
@@ -35,22 +35,23 @@ class Bib {
 
         // some extra parsing (that obj name on the right? That comes directly from the text you type in the header row of the spreadsheet)
         obj.id = i;
-        obj.rating = util.parseRating(obj.charitynavigatorrating);
-        obj.deductible = util.parseBool(obj.taxdeductibleyn);
-        obj.accredited = util.parseBool(obj.accreditedbusinessyn);
+        obj.citation = obj.citation;
+        //obj.rating = util.parseRating(obj.charitynavigatorrating);
+        //obj.deductible = util.parseBool(obj.taxdeductibleyn);
+        //obj.accredited = util.parseBool(obj.accreditedbusinessyn);
         obj.categories = _.compact([obj.category1, obj.category2, obj.category3]);
         obj.subcategories = _.compact([obj.subcategory1, obj.subcategory2]);
-        obj.additionalServices = _.compact([obj.filter1, obj.filter2, obj.filter3]);
+        //obj.additionalServices = _.compact([obj.filter1, obj.filter2, obj.filter3]);
         obj.description = obj.description100characters;
-        obj.donatelink = util.trim(obj.donatelink);
-        obj.volunteerlink = util.trim(obj.volunteerlink);
-        obj.contributelink = util.trim(obj.contributelink);
-        obj.number = util.parseNumber(obj.numbers);
-        obj.services = [];
-        if (obj.donatelink) obj.services.push('donations');
-        if (obj.volunteerlink) obj.services.push('volunteers');
-        if (obj.contributelink) obj.services.push('open source contributions');
-        obj.services = obj.services.concat(obj.additionalServices);
+        //obj.donatelink = util.trim(obj.donatelink);
+        //obj.volunteerlink = util.trim(obj.volunteerlink);
+        //obj.contributelink = util.trim(obj.contributelink);
+        //obj.number = util.parseNumber(obj.numbers);
+        //obj.services = [];
+        //if (obj.donatelink) obj.services.push('donations');
+        //if (obj.volunteerlink) obj.services.push('volunteers');
+        //if (obj.contributelink) obj.services.push('open source contributions');
+        //obj.services = obj.services.concat(obj.additionalServices);
 
         // console.log(obj); // debug
 
@@ -62,13 +63,13 @@ class Bib {
 
   updateAvailableFilters(results) {
     var filters = [];
-    $('[data-flag=deductible]').attr('disabled', !_.some(results, r => r.deductible));
-    $('[data-flag=accredited]').attr('disabled', !_.some(results, r => r.accredited));
-    $('.filters-services button').each(function() {
-      var service = $(this).data('service');
-      $(this).attr('disabled',
-        !_.some(results, r => _.contains(r.services, service)));
-    });
+    //$('[data-flag=deductible]').attr('disabled', !_.some(results, r => r.deductible));
+    //$('[data-flag=accredited]').attr('disabled', !_.some(results, r => r.accredited));
+    //$('.filters-services button').each(function() {
+    //   var service = $(this).data('service');
+    //   $(this).attr('disabled',
+    //     !_.some(results, r => _.contains(r.services, service)));
+    // });
     $('.filters-subcategories button').each(function() {
       var cat = $(this).data('subcategory');
       $(this).attr('disabled',
@@ -98,37 +99,37 @@ class Bib {
     });
   }
 
-  loadServices() {
-    sheet.load(SPREADSHEET_ID, 4, rows => {
-      this.services = _.map(rows, row => {
-        var service = sheet.parseRow(row).service;
-        $('.filters-services').append(
-          `<button data-service="${service}">${util.slugify(service)}</button>`);
-        return service;
-      });
-    });
-  }
+  // loadServices() {
+  //   sheet.load(SPREADSHEET_ID, 4, rows => {
+  //     this.services = _.map(rows, row => {
+  //       var service = sheet.parseRow(row).service;
+  //       $('.filters-services').append(
+  //         `<button data-service="${service}">${util.slugify(service)}</button>`);
+  //       return service;
+  //     });
+  //   });
+  // }
 
-  bindRatingFilter() {
-    $('.filters-rating').on('click', ev => {
-      var el = $(ev.target);
-      el.toggleClass('selected');
-      this.filters.sortByRating = el.hasClass('selected');
-      this.renderResults();
-    });
-  }
+  // bindRatingFilter() {
+  //   $('.filters-rating').on('click', ev => {
+  //     var el = $(ev.target);
+  //     el.toggleClass('selected');
+  //     this.filters.sortByRating = el.hasClass('selected');
+  //     this.renderResults();
+  //   });
+  // }
 
-  bindSharing() {
-    $('.results').on('click', '.action-share', ev => {
-      var id = $(ev.target).data('id'),
-          parent = $(ev.target).closest('.result'),
-          org = this.orgs[id],
-          html = render.sharing(org);
-      parent.find('.result-sharing').html(html).show();
-    }).on('mouseleave', '.result', ev => {
-      $('.result-sharing').hide();
-    });
-  }
+  // bindSharing() {
+  //   $('.results').on('click', '.action-share', ev => {
+  //     var id = $(ev.target).data('id'),
+  //         parent = $(ev.target).closest('.result'),
+  //         org = this.orgs[id],
+  //         html = render.sharing(org);
+  //     parent.find('.result-sharing').html(html).show();
+  //   }).on('mouseleave', '.result', ev => {
+  //     $('.result-sharing').hide();
+  //   });
+  // }
 
   bindFilter(sel, dataName, filterType) {
     $(sel).on('click', 'button', ev => {
@@ -145,15 +146,15 @@ class Bib {
     });
   }
 
-  bindClear() {
-    $('.clear-filters').on('click', ev => {
-      this.results = this.orgs;
-      this.resetFilters();
-      this.renderResults();
-      $('.selected').removeClass('selected');
-      $('input[name=search]').val('');
-    });
-  }
+  // bindClear() {
+  //   $('.clear-filters').on('click', ev => {
+  //     this.results = this.orgs;
+  //     this.resetFilters();
+  //     this.renderResults();
+  //     $('.selected').removeClass('selected');
+  //     $('input[name=search]').val('');
+  //   });
+  // }
 
   bindSearch() {
     $('input[name=search]').on('keyup', ev => {
@@ -161,13 +162,13 @@ class Bib {
     });
   }
 
-  bindStateFilter() {
-    $('.results').on('click', '.result-state', ev => {
-      var state = $(ev.target).data('state');
-      this.filters.state = state;
-      this.renderResults();
-    });
-  }
+  // bindStateFilter() {
+  //   $('.results').on('click', '.result-state', ev => {
+  //     var state = $(ev.target).data('state');
+  //     this.filters.state = state;
+  //     this.renderResults();
+  //   });
+  // }
 
   bindSearchDropdown() {
     $('.search-dropdown').on('click', 'li', ev => {
@@ -231,20 +232,20 @@ class Bib {
       this.renderResults();
       search.index(this.orgs);
     });
-    this.loadServices();
+    // this.loadServices();
     this.loadCategories();
     this.loadSubCategories();
 
     this.bindSearch();
-    this.bindClear();
-    this.bindSharing();
-    this.bindRatingFilter();
+    // this.bindClear();
+    // this.bindSharing();
+    // this.bindRatingFilter();
     this.bindFiltersToggle();
     this.bindSearchDropdown();
-    this.bindStateFilter();
-    this.bindFilter('.filters-flags', 'flag', 'flags');
+    // this.bindStateFilter();
+    // this.bindFilter('.filters-flags', 'flag', 'flags');
     this.bindFilter('.filters-categories', 'category', 'categories');
-    this.bindFilter('.filters-services', 'service', 'services');
+    // this.bindFilter('.filters-services', 'service', 'services');
     this.bindFilter('.filters-subcategories', 'subcategory', 'subcategories');
   }
 }

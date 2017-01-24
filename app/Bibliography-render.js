@@ -4,31 +4,12 @@ import util from './Util';
 const render = {
   result: function(data) {
     return `
-      <li class="result">
-          <div class="result-preview">
-            <h2><span>${util.truncate(data.name, 30)}</span></h2>
-            <p class="result-description">${util.truncate(data.description, 132)}</p>
-          </div>
-          <div class="result-info">
-              <h3><a href="${data.website ? data.website : '#'}" target="_blank">${data.name}</a> welcomes ${util.joinAnd(_.map(data.services, s => `<span class="result-service">${s.toLowerCase().replace('esl', 'ESL')}</span>`))}${data.additionalServices.length > 0 ? ' help' : ''}.</h3>
-              <div class="result-meta">
-                <div class="result-meta-info">
-                  ${data.state ? `<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="${data.state}">${data.state}</span></h5>` : ''}
-                  <h5>${data.categories.join(', ')}</h5>
-                </div>
-                <div class="result-meta-share">
-                  ${data.number ? `<a href="tel:${data.number}"><i class="fa fa-phone"></i></a>` : ''}
-                  <i class="fa fa-share-alt action-share" data-id="${data.id}"></i>
-                </div>
-              </div>
-              <div class="result-actions">
-                ${data.donatelink ? `<a target="_blank" href="${data.donatelink}">Testing</a>` : ''}
-                ${data.volunteerlink ? `<a target="_blank" href="${data.volunteerlink}">Things</a>` : ''}
-                ${data.contributelink ? `<a target="_blank" href="${data.contributelink}">Out</a>` : ''}
-              </div>
-          </div>
-          <div class="result-sharing"></div>
-      </li>`;
+        <li class="result">
+            <div class="result-preview">
+              <h2><span>${util.truncate(data.name, 40)}</span></h2>
+              <p class="result-description">${util.truncate(data.description, 132)}</p>
+            </div>
+        </li>`;
   },
 
   rating: function(rating) {
