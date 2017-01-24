@@ -107,24 +107,29 @@ b
     flex-wrap: wrap
     -webkit-flex-wrap: wrap
 
+.search
+  background-color: lighten($altColor, 10%)
+
 .search-input
   width: 100%
-  padding: 0.5em 1em 0.5em 2.5em
+  padding: 0.5em 1em 0.5em 2em
   border: none
   font-family: $primaryFont
+  font-weight: 300
   font-size: 1.5em
-  border-radius: 2em
-  color: #a6a6a6
+  background-color: transparent
+  //border-radius: 2em
+  color: $black
 
 .search-wrapper
   position: relative
-  margin: 0 0 2em 0
+  //margin: 0 0 2em 0
   &:before
     font-family: 'FontAwesome'
     color: $primaryColor
     position: absolute
     top: 0.3em
-    left: 0.5em
+    //left: 0.5em
     content: "\f002"
     font-size: 2em
 

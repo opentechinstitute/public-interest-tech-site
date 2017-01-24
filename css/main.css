@@ -157,24 +157,26 @@ b {
     flex-wrap: wrap;
     -webkit-flex-wrap: wrap; }
 
+.search {
+  background-color: #85d7c9; }
+
 .search-input {
   width: 100%;
-  padding: 0.5em 1em 0.5em 2.5em;
+  padding: 0.5em 1em 0.5em 2em;
   border: none;
   font-family: "Source Sans Pro", "Montserrat", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
   font-size: 1.5em;
-  border-radius: 2em;
-  color: #a6a6a6; }
+  background-color: transparent;
+  color: #415851; }
 
 .search-wrapper {
-  position: relative;
-  margin: 0 0 2em 0; }
+  position: relative; }
   .search-wrapper:before {
     font-family: "FontAwesome";
     color: #319282;
     position: absolute;
     top: 0.3em;
-    left: 0.5em;
     content: "";
     font-size: 2em; }
 
@@ -384,14 +386,17 @@ footer {
 
 .result {
   display: inline-block;
-  width: 32.9%;
-  border: 4px solid #319282;
+  width: 31.5%;
+  background-color: #eee;
   text-align: center;
-  padding: 1.5em 1.2em 1.5em 1.2em;
-  margin: 0.4em 0 0 0;
+  padding: 1.5em 1.2em;
+  margin: 0.5em;
   position: relative;
   vertical-align: top;
   height: 16em; }
+  .result ul {
+    display: flex;
+    flex-wrap: wrap; }
   .result a, .result a:visited {
     color: #fff; }
     .result a:hover, .result a:visited:hover {

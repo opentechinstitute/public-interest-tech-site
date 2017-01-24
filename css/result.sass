@@ -7,14 +7,18 @@ $resultHeight: 16em
 
 .result
   display: inline-block
-  width: 32.9%
-  border: $borderSize solid $primaryColor
+  width: 31.5%
+  //border: $borderSize solid $primaryColor
+  background-color: #eee
   text-align: center
-  padding: 1.5em 1.2em 1.5em 1.2em
-  margin: 0.4em 0 0 0
+  padding: 1.5em 1.2em
+  margin: 0.5em
   position: relative
   vertical-align: top
   height: $resultHeight
+  ul
+    display: flex
+    flex-wrap: wrap
   a, a:visited
     color: #fff
     &:hover
