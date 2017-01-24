@@ -1,7 +1,8 @@
 @import reset
 @import fonts
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700')
-@import url('https://fonts.googleapis.com/css?family=Inconsolata|Raleway|Space+Mono|Source+Sans+Pro|Source+Code+Pro')
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700')
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Raleway|Space+Mono|Source+Code+Pro')
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
 
 $secondaryColor: #f8e30d // Super bright accent yellow
@@ -11,7 +12,7 @@ $altSecondaryColor: #f5743d // brighter red-orange
 $white: #fdfdf1 // A warm off-white: 
 $black: #415851 // A cool, dark grey
 $primaryFont: 'Source Sans Pro', 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
-$headerFont: 'Space Mono', 'Inconsolata', 'Courier', monospace
+$headerFont: 'Source Sans Pro', 'Space Mono', 'Inconsolata', 'Courier', monospace
 
 *
   -moz-box-sizing: border-box
@@ -25,6 +26,9 @@ html
 h1, h2, h3, h4, h5, h6 
   font-family: $headerFont
 
+h1
+  font-weight: 300
+
 h2
   font-size: 1.4em
 
@@ -37,7 +41,8 @@ main
   clear: both
 
 .content
-  max-width: 960px
+  //max-width: 960px
+  max-width: 1200px
   margin: 0 auto
   clear: both
   padding: 0 2em
@@ -147,14 +152,14 @@ header
     vertical-align: middle
     margin-top: -2px
   .content
-    padding: 1em 2em
+    //padding: 1em 2em
 
 .header-bar
-  height: 60px
-  padding: 1em
-  background-color: $primaryColor
+  //height: 60px
+  //padding: 1em
+  background-color: $altColor
   color: $black
-  display: flex
+  //display: flex
   top: 0
   left: 0
   right: 0
@@ -176,31 +181,42 @@ header
       background-color: lighten($altColor, 8%)
       border: 2px solid $white
       text-decoration: none
+  nav ul 
+    margin: 0
+    padding: 0
+  nav li
+    display: inline
   .header-bar-left,
-  .header-bar-right
-    span, a
-      margin: 0 0.5em
+  .header-bar-right,
+    line-height: 2.5
   .header-bar-right
     text-align: right
     right: 0
-  .header-bar-left,
-  .header-bar-right,
+    flex: 3
+  .header-bar-left
     flex: 1
-    line-height: 2.5
+  .header-bar-top
+    height: 12em
+    width: 100%
+    //padding: 4em 4em 0 4em
+  .header-bar-bottom
+    height: 5em
+    width: 100%
+    //padding: 0 5em
 
 .title
   font-size: 2.8em
-  text-align: center
-  font-weight: bold
-  margin: 3em 0 0.8em 0
+  text-align: left
   line-height: 135%
+  color: $white
+  border-bottom: 1px $white solid
+  padding-bottom: 0.5em
 
 footer
   background: #fff
   color: $black
-  padding: 3em 4em
+  padding: 3em 0
   display: flex
-  //position: fixed
   bottom: 0
   left: 0
   right: 0
@@ -246,6 +262,9 @@ footer
   .copyright
     flex: 1
     line-height: 2.5
+
+.footer-container
+  display: flex
 
 .filters-all-content
   display: none
