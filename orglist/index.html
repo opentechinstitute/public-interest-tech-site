@@ -11,86 +11,97 @@
     <meta property="og:description" content="The Technology and Social Justice Field Scan is a participatory action research project intended to better understand the types of work currently being done with technology for social justice and the public interest, as well as the pathways people take into the work.">
     <meta property="og:image" content="">
     <meta name="twitter:card" content="">
-    <meta name="twitter:title" content="pubbintech">
+    <meta name="twitter:title" content="tech4socialjust">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body>
     <main>
         <header>
-            <div class="header-bar">
-                <h1 class="logo"><a href="#"><i class="fa fa-chevron-left fa-1x"></i><i class="fa fa-balance-scale fa-1x"></i><i class="fa fa-chevron-right fa-1x"></i></h1>
-                <div class="header-bar-right">
-                    <a href="#" class="submit-button">Help us keep this list up to date</a>
+            <div class="header-bar content">
+                <div class="header-bar-top">
+                    <h1 class="title">The Technology and Social Justice Field Scan</h1>
+                    <!--<h1 class="logo"><a href="#"><i class="fa fa-chevron-left fa-1x"></i><i class="fa fa-balance-scale fa-1x"></i><i class="fa fa-chevron-right fa-1x"></i></h1>
+                    -->                
+                </div>
+                <div class="header-bar-bottom">
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="/about">About</a></li>
+                            <li class="active"><a href="/orglist">Search Projects & Organizations</a></li>
+                            <li><a href="/bibliography">Shared Readings</a></li>
+                        </ul>
+                    </nav>
+                    <!-- <a href="https://docs.google.com/spreadsheets/d/1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4/edit?usp=sharing" class="submit-button">Help us keep this list up to date</a> -->
                 </div>
             </div>
-            <section class="content">
-                <h1 class="title">The Technology and Social Justice Field Scan</h1>
-                <div class="search-wrapper">
+            <section class="search">
+                <div class="search-wrapper content">
                     <input type="text" name="search" class="search-input" placeholder="Search for an organization by name, city, interest or action" aria-label="Search">
                     <ul class="search-dropdown"></ul>
                 </div>
-<!--                 <div class="filters filters-categories"></div>-->            
+            </section>
+            <section class="filters-all">
+                <div class="content">
+                    <div class="filters-controls">
+                        <button class="toggle-filters"><i class="fa fa-sliders"></i> Filters</button>
+                        <button class="clear-filters"><i class="fa fa-times"></i> Clear</button>
+                    </div>
+                    <div class="filters-all-content">
+                        <div class="filters filters-categories"></div>
+                        <div class="filters filters-subcategories"></div>
+                        <!-- <div class="filters-group">
+                            <div class="filters filters-flags">
+                                <button data-flag="deductible">Tax Deductible</button>
+                                <button data-flag="accredited">Accredited Business</button>
+                            </div>
+                            <div class="filters filters-rating">
+                                <button>Sort by Charity Navigator Score</button>
+                            </div>
+                        </div> -->
+                        <div class="filters filters-services"></div>
+                    </div>
+                </div>
             </section>
         </header>
-        <section class="filters-all">
-            <div class="content">
-                <div class="filters-controls">
-                    <button class="toggle-filters"><i class="fa fa-sliders"></i> Filters</button>
-                    <button class="clear-filters"><i class="fa fa-times"></i> Clear</button>
-                </div>
-                <div class="filters-all-content">
-                    <div class="filters filters-categories"></div>
-                    <div class="filters filters-subcategories"></div>
-                    <!-- <div class="filters-group">
-                        <div class="filters filters-flags">
-                            <button data-flag="deductible">Tax Deductible</button>
-                            <button data-flag="accredited">Accredited Business</button>
-                        </div>
-                        <div class="filters filters-rating">
-                            <button>Sort by Charity Navigator Score</button>
-                        </div>
-                    </div> -->
-                    <div class="filters filters-services"></div>
-                </div>
-            </div>
-        </section>
         <section class="results content">
-            <ul><h1 class="loading">Loading...</h1></ul>
+            <ul><h1 class="loading">Loading list of organizations...</h1></ul>
         </section>
         <footer>
-            <div class="footer-left">
-                <section class="about">
-                    <h2>About</h2>
-                    <p>The Technology and Social Justice Field Scan is a participatory action research project intended to better understand the types of work currently being done with technology for social justice and the public interest, as well as the pathways people take into the work. The goal is to identify people, groups, and networks who are already working in this space, including those who are not ‘the usual suspects’ in the civic technology world, and to learn from them: what their paths into the work have been; what they see as their greatest constraints; where they hit brick ceilings (resistance to change); and what’s most needed to grow and diversify the field.</p>
-                </section>
-                <section class="social">
-                    <a href="https://twitter.com/tech4socialjust"><i class="fa fa-twitter fa-3x"></i><span>Follow the project on Twitter!</span></a>
-                </section>
-            </div>
-            <div class="footer-right">
-                <section class="core-team">
-                    <h2>Core Research Team</h2>
-                    <ul>
-                        <li><a href="http://rad.cat/" alt="Research Action Design" title="Research Action Design"><img src="../assets/rad-logo.png" alt="Research Action Design"></a></li>
-                        <li><a href="https://www.newamerica.org/oti/" alt="Open Technology Institute of the New America Foundation" title="Open Technology Institute of the New America Foundation"><img src="../assets/oti-logo.png" alt="Open Technology Institute"></a></li>
-                    </ul>
-                </section>
-                <section class="partners">
-                    <h2>Project Partners</h2>
-                    <ul>
-                        <li><a href="" alt="Aspiration"><img src="../assets/" alt=""></a></li>
-                        <li><a href="" alt=""><img src="../assets/" alt=""></a></li> 
-                        <li><a href="" alt=""><img src="../assets/" alt=""></a></li> 
-                        <li><a href="" alt=""><img src="../assets/" alt=""></a></li>                     
-                    </ul>
-                    <p>TBD</p>
-                </section>
+            <div class="content footer-container">
+                <div class="footer-left">
+                    <section class="about">
+                        <h2>About</h2>
+                        <p>The Technology and Social Justice Field Scan is a participatory action research project intended to better understand the types of work currently being done with technology for social justice and the public interest, as well as the pathways people take into the work. The goal is to identify people, groups, and networks who are already working in this space, including those who are not ‘the usual suspects’ in the civic technology world, and to learn from them: what their paths into the work have been; what they see as their greatest constraints; where they hit brick ceilings (resistance to change); and what’s most needed to grow and diversify the field.</p>
+                    </section>
+                    <section class="social">
+                        <a href="https://twitter.com/tech4socialjust"><i class="fa fa-twitter fa-3x"></i><span>Follow the project on Twitter!</span></a>
+                    </section>
+                </div>
+                <div class="footer-right">
+                    <section class="core-team">
+                        <h2>Core Research Team</h2>
+                        <ul>
+                            <li><a href="http://rad.cat/" alt="Research Action Design"><img src="assets/rad-logo.png" alt="Research Action Design" title="Research Action Design"></a></li>
+                            <li><a href="https://www.newamerica.org/oti/" alt="Open Technology Institute of the New America Foundation"><img src="assets/oti-logo.png" alt="Open Technology Institute" title="Open Technology Institute"></a></li>
+                        </ul>
+                    </section>
+                    <div class="clear"></div>
+                    <section class="partners">
+                        <h2>Project Partners</h2>
+                        <ul>
+                            <li><a href="https://aspirationtech.org/" alt="Aspiration Tech"><img src="assets/aspiration-logo.gif" alt="Aspiration Tech" title="Aspiration Tech"></a></li>
+                            <li><a href="https://www.theengineroom.org/" alt="The Engine Room"><img src="assets/engine-room-logo-2.png" alt="The Engine Room" title="The Engine Room"></a></li>
+                            <li><a href="https://palantetech.coop/" alt="Palante Tech Cooperative"><img src="assets/palante-logo.png" alt="Palante Tech Cooperative" title="Palante Tech Cooperative"></a></li>
+                            <li><a href="http://www.hackthehood.org/" alt="Hack the Hood"><img src="assets/hack-the-hood-logo.png" alt="Hack the Hood" title="Hack the Hood"></a></li>
+                        </ul>
+                    </section>
+                </div>
             </div>
         </footer>
     </main>
-    <script src="https://mayawagon.github.io/public-interest-tech-site/orglist.bundle.js"></script>
+    <script src="orglist.bundle.js"></script>
   </body>
 </html>
 
