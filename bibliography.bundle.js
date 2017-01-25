@@ -11969,13 +11969,13 @@
 	
 	var _Util2 = _interopRequireDefault(_Util);
 	
-	var _Render = __webpack_require__(6);
+	var _BibliographyRender = __webpack_require__(6);
 	
-	var _Render2 = _interopRequireDefault(_Render);
+	var _BibliographyRender2 = _interopRequireDefault(_BibliographyRender);
 	
-	var _Search = __webpack_require__(7);
+	var _BibliographySearch = __webpack_require__(7);
 	
-	var _Search2 = _interopRequireDefault(_Search);
+	var _BibliographySearch2 = _interopRequireDefault(_BibliographySearch);
 	
 	var _Sheet = __webpack_require__(4);
 	
@@ -11985,8 +11985,8 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var SPREADSHEET_ID = '1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4';
-	var NO_RESULTS_COPY = "Can't find the organization you're looking for? Help grow our Togetherlist database. Please submit using our <a href='https://docs.google.com/forms/d/e/1FAIpQLScS3scl2_LiNyDk0jf1CCPF9qsZlmrlvTWW_ckMlhGeEL0OXw/viewform?c=0&w=1'>Submissions Form</a>.";
+	var SPREADSHEET_ID = '1056cinZ2uYjomUOTF70unqeUjYkYc-z3Usmsq0_9fU4'; //'1056cinZ2uYjomUOTF70unqeUjYkYc-z3Usmsq0_9fU4'; //'1kq6z9cEeqqGL5R5mdclkj5HjD-w9dvL8xCYmhG1UziQ';
+	var NO_RESULTS_COPY = "Nothing found :( <br><br> Think this is an error? Let us know by emailing maya@opentechinstitute.org";
 	
 	var Bib = function () {
 	  function Bib() {
@@ -12018,28 +12018,37 @@
 	          var obj = _Sheet2.default.parseRow(row);
 	
 	          // skip if no name
-	          if (!obj.name) return;
+	          //if (!obj.name) return;
 	
-	          // some extra parsing (that obj name on the right? That comes directly from the text you type in the header row of the spreadsheet)
+	          // skip if not ready
+	          if (obj.readyyn !== 'y') return;
+	
+	          // some extra parsing
 	          obj.id = i;
+	          obj.whatisit = obj.whatisit;
 	          obj.rating = _Util2.default.parseRating(obj.charitynavigatorrating);
-	          obj.deductible = _Util2.default.parseBool(obj.taxdeductibleyn);
-	          obj.accredited = _Util2.default.parseBool(obj.accreditedbusinessyn);
+	          //obj.deductible = util.parseBool(obj.taxdeductibleyn);
+	          //obj.accredited = util.parseBool(obj.accreditedbusinessyn);
 	          obj.categories = _underscore2.default.compact([obj.category1, obj.category2, obj.category3]);
 	          obj.subcategories = _underscore2.default.compact([obj.subcategory1, obj.subcategory2]);
 	          obj.additionalServices = _underscore2.default.compact([obj.filter1, obj.filter2, obj.filter3]);
 	          obj.description = obj.description100characters;
-	          obj.donatelink = _Util2.default.trim(obj.donatelink);
-	          obj.volunteerlink = _Util2.default.trim(obj.volunteerlink);
-	          obj.contributelink = _Util2.default.trim(obj.contributelink);
-	          obj.number = _Util2.default.parseNumber(obj.numbers);
+	          obj.descriptionlength = obj.descriptionlength;
+	          obj.author = obj.author;
+	          obj.date = obj.date;
+	          obj.annotation = obj.annotation;
+	          obj.annotationauthor = obj.annotationauthor;
+	          //obj.number = util.parseNumber(obj.numbers);
+	          obj.dead = _Util2.default.parseBool(obj.dead);
 	          obj.services = [];
 	          if (obj.donatelink) obj.services.push('donations');
 	          if (obj.volunteerlink) obj.services.push('volunteers');
 	          if (obj.contributelink) obj.services.push('open source contributions');
+	          if (obj.joblink) obj.services.push('applications');
 	          obj.services = obj.services.concat(obj.additionalServices);
+	          obj.state = obj.location; //a cheat to make it so spreadsheet header can be "location" while variable is still "state" (leftover from togetherlist)
 	
-	          // console.log(obj); // debug
+	          console.log(obj); // debug
 	
 	          return obj;
 	        }).compact().value();
@@ -12050,18 +12059,13 @@
 	    key: 'updateAvailableFilters',
 	    value: function updateAvailableFilters(results) {
 	      var filters = [];
-	      (0, _jquery2.default)('[data-flag=deductible]').attr('disabled', !_underscore2.default.some(results, function (r) {
-	        return r.deductible;
-	      }));
-	      (0, _jquery2.default)('[data-flag=accredited]').attr('disabled', !_underscore2.default.some(results, function (r) {
-	        return r.accredited;
-	      }));
-	      (0, _jquery2.default)('.filters-services button').each(function () {
-	        var service = (0, _jquery2.default)(this).data('service');
-	        (0, _jquery2.default)(this).attr('disabled', !_underscore2.default.some(results, function (r) {
-	          return _underscore2.default.contains(r.services, service);
-	        }));
-	      });
+	      //$('[data-flag=deductible]').attr('disabled', !_.some(results, r => r.deductible));
+	      //$('[data-flag=accredited]').attr('disabled', !_.some(results, r => r.accredited));
+	      //$('.filters-services button').each(function() {
+	      //   var service = $(this).data('service');
+	      //   $(this).attr('disabled',
+	      //     !_.some(results, r => _.contains(r.services, service)));
+	      // });
 	      (0, _jquery2.default)('.filters-subcategories button').each(function () {
 	        var cat = (0, _jquery2.default)(this).data('subcategory');
 	        (0, _jquery2.default)(this).attr('disabled', !_underscore2.default.some(results, function (r) {
@@ -12095,73 +12099,66 @@
 	        });
 	      });
 	    }
-	  }, {
-	    key: 'loadServices',
-	    value: function loadServices() {
-	      var _this4 = this;
 	
-	      _Sheet2.default.load(SPREADSHEET_ID, 4, function (rows) {
-	        _this4.services = _underscore2.default.map(rows, function (row) {
-	          var service = _Sheet2.default.parseRow(row).service;
-	          (0, _jquery2.default)('.filters-services').append('<button data-service="' + service + '">' + _Util2.default.slugify(service) + '</button>');
-	          return service;
-	        });
-	      });
-	    }
-	  }, {
-	    key: 'bindRatingFilter',
-	    value: function bindRatingFilter() {
-	      var _this5 = this;
+	    // loadServices() {
+	    //   sheet.load(SPREADSHEET_ID, 4, rows => {
+	    //     this.services = _.map(rows, row => {
+	    //       var service = sheet.parseRow(row).service;
+	    //       $('.filters-services').append(
+	    //         `<button data-service="${service}">${util.slugify(service)}</button>`);
+	    //       return service;
+	    //     });
+	    //   });
+	    // }
 	
-	      (0, _jquery2.default)('.filters-rating').on('click', function (ev) {
-	        var el = (0, _jquery2.default)(ev.target);
-	        el.toggleClass('selected');
-	        _this5.filters.sortByRating = el.hasClass('selected');
-	        _this5.renderResults();
-	      });
-	    }
-	  }, {
-	    key: 'bindSharing',
-	    value: function bindSharing() {
-	      var _this6 = this;
+	    // bindRatingFilter() {
+	    //   $('.filters-rating').on('click', ev => {
+	    //     var el = $(ev.target);
+	    //     el.toggleClass('selected');
+	    //     this.filters.sortByRating = el.hasClass('selected');
+	    //     this.renderResults();
+	    //   });
+	    // }
 	
-	      (0, _jquery2.default)('.results').on('click', '.action-share', function (ev) {
-	        var id = (0, _jquery2.default)(ev.target).data('id'),
-	            parent = (0, _jquery2.default)(ev.target).closest('.result'),
-	            org = _this6.orgs[id],
-	            html = _Render2.default.sharing(org);
-	        parent.find('.result-sharing').html(html).show();
-	      }).on('mouseleave', '.result', function (ev) {
-	        (0, _jquery2.default)('.result-sharing').hide();
-	      });
-	    }
+	    // bindSharing() {
+	    //   $('.results').on('click', '.action-share', ev => {
+	    //     var id = $(ev.target).data('id'),
+	    //         parent = $(ev.target).closest('.result'),
+	    //         org = this.orgs[id],
+	    //         html = render.sharing(org);
+	    //     parent.find('.result-sharing').html(html).show();
+	    //   }).on('mouseleave', '.result', ev => {
+	    //     $('.result-sharing').hide();
+	    //   });
+	    // }
+	
 	  }, {
 	    key: 'bindFilter',
 	    value: function bindFilter(sel, dataName, filterType) {
-	      var _this7 = this;
+	      var _this4 = this;
 	
 	      (0, _jquery2.default)(sel).on('click', 'button', function (ev) {
 	        var el = (0, _jquery2.default)(ev.target),
 	            filter = el.data(dataName);
 	        el.toggleClass('selected');
 	        if (el.hasClass('selected')) {
-	          _this7.filters[filterType].push(filter);
+	          _this4.filters[filterType].push(filter);
 	        } else {
-	          _this7.filters[filterType] = _underscore2.default.without(_this7.filters[filterType], filter);
+	          _this4.filters[filterType] = _underscore2.default.without(_this4.filters[filterType], filter);
 	        }
-	        _this7.renderResults();
+	        _this4.renderResults();
 	        return false;
 	      });
 	    }
 	  }, {
 	    key: 'bindClear',
 	    value: function bindClear() {
-	      var _this8 = this;
+	      var _this5 = this;
 	
 	      (0, _jquery2.default)('.clear-filters').on('click', function (ev) {
-	        _this8.results = _this8.orgs;
-	        _this8.resetFilters();
-	        _this8.renderResults();
+	        _this5.results = _this5.orgs;
+	        _this5.resetFilters();
+	        _this5.renderResults();
 	        (0, _jquery2.default)('.selected').removeClass('selected');
 	        (0, _jquery2.default)('input[name=search]').val('');
 	      });
@@ -12169,32 +12166,32 @@
 	  }, {
 	    key: 'bindSearch',
 	    value: function bindSearch() {
-	      var _this9 = this;
+	      var _this6 = this;
 	
 	      (0, _jquery2.default)('input[name=search]').on('keyup', function (ev) {
-	        _this9.search();
+	        _this6.search();
 	      });
 	    }
 	  }, {
 	    key: 'bindStateFilter',
 	    value: function bindStateFilter() {
-	      var _this10 = this;
+	      var _this7 = this;
 	
 	      (0, _jquery2.default)('.results').on('click', '.result-state', function (ev) {
 	        var state = (0, _jquery2.default)(ev.target).data('state');
-	        _this10.filters.state = state;
-	        _this10.renderResults();
+	        _this7.filters.state = state;
+	        _this7.renderResults();
 	      });
 	    }
 	  }, {
 	    key: 'bindSearchDropdown',
 	    value: function bindSearchDropdown() {
-	      var _this11 = this;
+	      var _this8 = this;
 	
 	      (0, _jquery2.default)('.search-dropdown').on('click', 'li', function (ev) {
 	        var name = (0, _jquery2.default)(ev.target).data('name');
 	        (0, _jquery2.default)('input[name=search]').val(name);
-	        _this11.search();
+	        _this8.search();
 	        (0, _jquery2.default)('.search-dropdown').hide();
 	      });
 	      (0, _jquery2.default)('.search-wrapper').on('mouseleave', function (ev) {
@@ -12211,12 +12208,12 @@
 	  }, {
 	    key: 'search',
 	    value: function search() {
-	      var _this12 = this;
+	      var _this9 = this;
 	
 	      var query = (0, _jquery2.default)('input[name=search]').val();
 	      if (query) {
-	        this.results = _underscore2.default.map(_Search2.default.search(query), function (res) {
-	          return _this12.orgs[res.ref];
+	        this.results = _underscore2.default.map(_BibliographySearch2.default.search(query), function (res) {
+	          return _this9.orgs[res.ref];
 	        });
 	        this.renderResults();
 	        this.renderSearchNames();
@@ -12239,10 +12236,10 @@
 	    key: 'renderResults',
 	    value: function renderResults() {
 	      var html = [],
-	          results = _Search2.default.filter(this.results, this.filters);
+	          results = _BibliographySearch2.default.filter(this.results, this.filters);
 	      if (results.length > 0) {
 	        _underscore2.default.each(results, function (result) {
-	          html.push(_Render2.default.result(result));
+	          html.push(_BibliographyRender2.default.result(result));
 	        });
 	        if (this.filters.state) {
 	          html = ['<h2 class="filters-state">Showing organizations for <b>' + this.filters.state + '</b></h2>'].concat(html);
@@ -12256,27 +12253,27 @@
 	  }, {
 	    key: 'run',
 	    value: function run() {
-	      var _this13 = this;
+	      var _this10 = this;
 	
 	      this.loadOrgs(function () {
-	        _this13.results = _this13.orgs;
-	        _this13.renderResults();
-	        _Search2.default.index(_this13.orgs);
+	        _this10.results = _this10.orgs;
+	        _this10.renderResults();
+	        _BibliographySearch2.default.index(_this10.orgs);
 	      });
-	      this.loadServices();
+	      // this.loadServices();
 	      this.loadCategories();
 	      this.loadSubCategories();
 	
 	      this.bindSearch();
 	      this.bindClear();
-	      this.bindSharing();
-	      this.bindRatingFilter();
+	      // this.bindSharing();
+	      // this.bindRatingFilter();
 	      this.bindFiltersToggle();
 	      this.bindSearchDropdown();
 	      this.bindStateFilter();
-	      this.bindFilter('.filters-flags', 'flag', 'flags');
+	      // this.bindFilter('.filters-flags', 'flag', 'flags');
 	      this.bindFilter('.filters-categories', 'category', 'categories');
-	      this.bindFilter('.filters-services', 'service', 'services');
+	      // this.bindFilter('.filters-services', 'service', 'services');
 	      this.bindFilter('.filters-subcategories', 'subcategory', 'subcategories');
 	    }
 	  }]);
@@ -12308,25 +12305,59 @@
 	
 	var render = {
 	  result: function result(data) {
-	    var ifdead = "";
-	    if (data.dead == true) {
-	      var ifdead = "dead";
-	      var tense = "was";
-	    } else {
-	      var tense = "is";
+	    var resource = '<li class="resource"><article><a href="' + data.url + '"><h1>' + data.name + '</h1></a>';
+	    if (data.author.length > 0) {
+	      resource = resource + '<h2>by ' + data.author + '</h2>';
 	    }
-	    if (data.services.length > 0) {
-	      var ifaccepting = " that accepts";
-	    } else {
-	      var ifaccepting = "";
+	    if (data.whatisit.length > 0) {
+	      resource = resource + '<h3>' + data.whatisit + '</h3>';
 	    }
-	    if (data.descriptionlength < 20 || data.descriptionlength > 100) {
-	      return;
-	    } else {
-	      return '\n        <li class="result ' + ifdead + '">\n            <div class="result-preview">\n              <h2><span>' + _Util2.default.truncate(data.name, 40) + '</span></h2>\n              <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n            </div>\n            <div class="result-info ' + ifdead + '">\n                <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> ' + tense + ' ' + data.whatisit + ifaccepting + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
-	        return ' <span class="result-service">' + s.toLowerCase().replace('esl', 'ESL') + '</span>';
-	      })) + (data.additionalServices.length > 0 ? '' : '') + '.</h3>\n                <div class="result-meta">\n                  <div class="result-meta-info">\n                    ' + (data.state ? '<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>' : '') + '\n                    <h5>' + data.categories.join(', ') + '</h5>\n                  </div>\n                  <div class="result-meta-share">\n                    ' + (data.number ? '<a href="tel:' + data.number + '"><i class="fa fa-phone"></i></a>' : '') + '\n                    <i class="fa fa-share-alt action-share" data-id="' + data.id + '"></i>\n                  </div>\n                </div>\n                <div class="result-actions">\n                  ' + (data.donatelink ? '<a target="_blank" href="' + data.donatelink + '">Donate</a>' : '') + '\n                  ' + (data.volunteerlink ? '<a target="_blank" href="' + data.volunteerlink + '">Volunteer</a>' : '') + '\n                  ' + (data.contributelink ? '<a target="_blank" href="' + data.contributelink + '">Contribute</a>' : '') + '\n                  ' + (data.joblink ? '<a target="_blank" href="' + data.joblink + '">Apply</a>' : '') + '\n                </div>\n            </div>\n            <div class="result-sharing"></div>\n        </li>';
+	    if (data.date.length > 0) {
+	      resource = resource + '<h3>' + data.date + '</h3>';
 	    }
+	    if (data.categories.length > 0) {
+	      resource = resource + '<h3>Tags: ' + data.categories.join(', ') + '</h3>';
+	    }
+	    if (data.annotation.length > 0) {
+	      resource = resource + '<aside class="annotation"><p>' + data.annotation + '</p>';
+	      if (data.annotationauthor.length > 0) {
+	        resource = resource + '<h4>—' + data.annotationauthor + '</h4>';
+	      }
+	      resource = resource + '</aside';
+	    }
+	    resource = resource + '</article></li>';
+	    // var ifdead = "";
+	    // if (data.dead == true) {
+	    //   var ifdead = "dead";
+	    //   var tense = "was";
+	    // }
+	    // else {
+	    //   var tense = "is";
+	    // }
+	    // if (data.services.length > 0) {
+	    //   var ifaccepting = " that accepts";
+	    // }
+	    // else {
+	    //   var ifaccepting = "";
+	    // }
+	    // if (data.descriptionlength < 20 || data.descriptionlength > 100) {
+	    //   return
+	    // }
+	    // else {
+	    return resource;
+	    // '<li>
+	    //     <article class="resource">
+	    //         <a href="${data.url}"><h1>${data.name}</h1></a>
+	    //         <h2>by ${data.author}</h2>
+	    //         <h3>${data.whatisit}, ${data.date}</h3>
+	    //         <h3>Tags: ${data.categories.join(', ')}</h3>
+	    //         <aside class="annotation">  
+	    //             <p>${data.annotation}</p>
+	    //             <h4>—${data.annotationauthor}</h4>
+	    //         </aside>
+	    //     </article>
+	    // </li> `;
+	    // }
 	  },
 	
 	  rating: function rating(_rating) {
@@ -12409,13 +12440,12 @@
 	        return _underscore2.default.contains(item.categories, cat);
 	      }) && _underscore2.default.every(filters.subcategories, function (cat) {
 	        return _underscore2.default.contains(item.subcategories, cat);
-	      }) && _underscore2.default.every(filters.services, function (service) {
-	        return _underscore2.default.contains(item.services, service);
-	      }) && _underscore2.default.every(filters.flags, function (flag) {
-	        return item[flag];
-	      }) && (!filters.state || item.state == filters.state);
+	      }) && (
+	      //_.every(filters.services, service => _.contains(item.services, service)) &&
+	      //_.every(filters.flags, flag => item[flag]) &&
+	      !filters.state || item.state == filters.state);
 	    }).sortBy(function (item, i) {
-	      return filters.sortByRating ? item.rating * -1 : i;
+	      //return filters.sortByRating ? item.rating * -1 : i;
 	    }).value();
 	  },
 	

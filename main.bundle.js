@@ -11947,146 +11947,8 @@
 
 /***/ },
 /* 5 */,
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _underscore = __webpack_require__(2);
-	
-	var _underscore2 = _interopRequireDefault(_underscore);
-	
-	var _Util = __webpack_require__(3);
-	
-	var _Util2 = _interopRequireDefault(_Util);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var render = {
-	  result: function result(data) {
-	    var ifdead = "";
-	    if (data.dead == true) {
-	      var ifdead = "dead";
-	      var tense = "was";
-	    } else {
-	      var tense = "is";
-	    }
-	    if (data.services.length > 0) {
-	      var ifaccepting = " that accepts";
-	    } else {
-	      var ifaccepting = "";
-	    }
-	    if (data.descriptionlength < 20 || data.descriptionlength > 100) {
-	      return;
-	    } else {
-	      return '\n        <li class="result ' + ifdead + '">\n            <div class="result-preview">\n              <h2><span>' + _Util2.default.truncate(data.name, 40) + '</span></h2>\n              <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n            </div>\n            <div class="result-info ' + ifdead + '">\n                <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> ' + tense + ' ' + data.whatisit + ifaccepting + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
-	        return ' <span class="result-service">' + s.toLowerCase().replace('esl', 'ESL') + '</span>';
-	      })) + (data.additionalServices.length > 0 ? '' : '') + '.</h3>\n                <div class="result-meta">\n                  <div class="result-meta-info">\n                    ' + (data.state ? '<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>' : '') + '\n                    <h5>' + data.categories.join(', ') + '</h5>\n                  </div>\n                  <div class="result-meta-share">\n                    ' + (data.number ? '<a href="tel:' + data.number + '"><i class="fa fa-phone"></i></a>' : '') + '\n                    <i class="fa fa-share-alt action-share" data-id="' + data.id + '"></i>\n                  </div>\n                </div>\n                <div class="result-actions">\n                  ' + (data.donatelink ? '<a target="_blank" href="' + data.donatelink + '">Donate</a>' : '') + '\n                  ' + (data.volunteerlink ? '<a target="_blank" href="' + data.volunteerlink + '">Volunteer</a>' : '') + '\n                  ' + (data.contributelink ? '<a target="_blank" href="' + data.contributelink + '">Contribute</a>' : '') + '\n                  ' + (data.joblink ? '<a target="_blank" href="' + data.joblink + '">Apply</a>' : '') + '\n                </div>\n            </div>\n            <div class="result-sharing"></div>\n        </li>';
-	    }
-	  },
-	
-	  rating: function rating(_rating) {
-	    var els = [],
-	        r = _rating;
-	    if (_rating < 0) {
-	      return 'N/A';
-	    } else {
-	      _underscore2.default.each(_underscore2.default.range(Math.floor(_rating)), function () {
-	        els.push('<i class="fa fa-star"></i>');
-	        r--;
-	      });
-	      if (r > 0) {
-	        els.push('<i class="fa fa-star-half-o"></i>');
-	      }
-	      _underscore2.default.each(_underscore2.default.range(5 - Math.ceil(_rating)), function () {
-	        els.push('<i class="fa fa-star-o"></i>');
-	      });
-	      return els.join('');
-	    }
-	  },
-	
-	  sharing: function sharing(org) {
-	    var twitter = 'https://twitter.com/intent/tweet?text=' + encodeURI('Support: ') + '&url=' + encodeURI(org.website) + '&via=thetogetherlist',
-	        facebook = 'https://www.facebook.com/sharer.php?u=' + encodeURI(org.website),
-	        tumblr = 'http://tumblr.com/widgets/share/tool?title=' + encodeURI(org.name) + '&canonicalUrl=' + encodeURI(org.website) + '&caption=' + encodeURI(org.description),
-	        email = 'mailto:?&subject=Check out ' + org.name + '&body=' + encodeURI([org.website, org.description].join('\n\n'));
-	    return '\n      <li><a href="' + twitter + '" title="Share via Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>\n      <li><a href="' + facebook + '" title="Share via Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>\n      <li><a href="' + tumblr + ' title="Share via Tumblr" target="_blank"><i class="fa fa-tumblr"></i></a></li>\n      <li><a href="' + email + '" title="Share via Email" target="_blank"><i class="fa fa-envelope"></i></a></li>\n    ';
-	  }
-	};
-	
-	exports.default = render;
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _lunr = __webpack_require__(8);
-	
-	var _lunr2 = _interopRequireDefault(_lunr);
-	
-	var _underscore = __webpack_require__(2);
-	
-	var _underscore2 = _interopRequireDefault(_underscore);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var search = {
-	  index: function index(items) {
-	    var _this = this;
-	
-	    this._index = (0, _lunr2.default)(function () {
-	      this.field('name', { boost: 10 });
-	      this.field('body');
-	      this.field('state');
-	      this.field('categories');
-	      this.ref('id');
-	    });
-	
-	    _underscore2.default.each(items, function (item, i) {
-	      _this._index.add({
-	        id: i,
-	        name: item.name,
-	        body: item.description,
-	        categories: item.categories.join(', '),
-	        state: item.state
-	      });
-	    });
-	  },
-	
-	  filter: function filter(items, filters) {
-	    return _underscore2.default.chain(items).filter(function (item) {
-	      return item.rating >= filters.rating && _underscore2.default.every(filters.categories, function (cat) {
-	        return _underscore2.default.contains(item.categories, cat);
-	      }) && _underscore2.default.every(filters.subcategories, function (cat) {
-	        return _underscore2.default.contains(item.subcategories, cat);
-	      }) && _underscore2.default.every(filters.services, function (service) {
-	        return _underscore2.default.contains(item.services, service);
-	      }) && _underscore2.default.every(filters.flags, function (flag) {
-	        return item[flag];
-	      }) && (!filters.state || item.state == filters.state);
-	    }).sortBy(function (item, i) {
-	      return filters.sortByRating ? item.rating * -1 : i;
-	    }).value();
-	  },
-	
-	  search: function search(query) {
-	    return this._index.search(query);
-	  }
-	};
-	
-	exports.default = search;
-
-/***/ },
+/* 6 */,
+/* 7 */,
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -14189,11 +14051,11 @@
 	
 	var _Util2 = _interopRequireDefault(_Util);
 	
-	var _Render = __webpack_require__(6);
+	var _Render = __webpack_require__(10);
 	
 	var _Render2 = _interopRequireDefault(_Render);
 	
-	var _Search = __webpack_require__(7);
+	var _Search = __webpack_require__(11);
 	
 	var _Search2 = _interopRequireDefault(_Search);
 	
@@ -14206,7 +14068,7 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var SPREADSHEET_ID = '1jwM-cYI1Ep9ZjNxGDjJXjqNkYA-f1ViyAH-Bv1tLvV4'; //'1kq6z9cEeqqGL5R5mdclkj5HjD-w9dvL8xCYmhG1UziQ';
-	var NO_RESULTS_COPY = "Nothing found :( <br> Think this is an error? Let us know by emailing maya@opentechinstitute.org";
+	var NO_RESULTS_COPY = "Nothing found :( <br><br> Think this is an error? Let us know by emailing maya@opentechinstitute.org";
 	
 	var App = function () {
 	  function App() {
@@ -14507,6 +14369,146 @@
 	}();
 	
 	exports.default = App;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _underscore = __webpack_require__(2);
+	
+	var _underscore2 = _interopRequireDefault(_underscore);
+	
+	var _Util = __webpack_require__(3);
+	
+	var _Util2 = _interopRequireDefault(_Util);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var render = {
+	  result: function result(data) {
+	    var ifdead = "";
+	    if (data.dead == true) {
+	      var ifdead = "dead";
+	      var tense = "was";
+	    } else {
+	      var tense = "is";
+	    }
+	    if (data.services.length > 0) {
+	      var ifaccepting = " that accepts";
+	    } else {
+	      var ifaccepting = "";
+	    }
+	    if (data.descriptionlength < 20 || data.descriptionlength > 100) {
+	      return;
+	    } else {
+	      return '\n        <li class="result ' + ifdead + '">\n            <div class="result-preview">\n              <h2><span>' + _Util2.default.truncate(data.name, 40) + '</span></h2>\n              <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n            </div>\n            <div class="result-info ' + ifdead + '">\n                <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> ' + tense + ' ' + data.whatisit + ifaccepting + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
+	        return ' <span class="result-service">' + s.toLowerCase().replace('esl', 'ESL') + '</span>';
+	      })) + (data.additionalServices.length > 0 ? '' : '') + '.</h3>\n                <div class="result-meta">\n                  <div class="result-meta-info">\n                    ' + (data.state ? '<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>' : '') + '\n                    <h5>' + data.categories.join(', ') + '</h5>\n                  </div>\n                  <div class="result-meta-share">\n                    ' + (data.number ? '<a href="tel:' + data.number + '"><i class="fa fa-phone"></i></a>' : '') + '\n                    <i class="fa fa-share-alt action-share" data-id="' + data.id + '"></i>\n                  </div>\n                </div>\n                <div class="result-actions">\n                  ' + (data.donatelink ? '<a target="_blank" href="' + data.donatelink + '">Donate</a>' : '') + '\n                  ' + (data.volunteerlink ? '<a target="_blank" href="' + data.volunteerlink + '">Volunteer</a>' : '') + '\n                  ' + (data.contributelink ? '<a target="_blank" href="' + data.contributelink + '">Contribute</a>' : '') + '\n                  ' + (data.joblink ? '<a target="_blank" href="' + data.joblink + '">Apply</a>' : '') + '\n                </div>\n            </div>\n            <div class="result-sharing"></div>\n        </li>';
+	    }
+	  },
+	
+	  rating: function rating(_rating) {
+	    var els = [],
+	        r = _rating;
+	    if (_rating < 0) {
+	      return 'N/A';
+	    } else {
+	      _underscore2.default.each(_underscore2.default.range(Math.floor(_rating)), function () {
+	        els.push('<i class="fa fa-star"></i>');
+	        r--;
+	      });
+	      if (r > 0) {
+	        els.push('<i class="fa fa-star-half-o"></i>');
+	      }
+	      _underscore2.default.each(_underscore2.default.range(5 - Math.ceil(_rating)), function () {
+	        els.push('<i class="fa fa-star-o"></i>');
+	      });
+	      return els.join('');
+	    }
+	  },
+	
+	  sharing: function sharing(org) {
+	    var twitter = 'https://twitter.com/intent/tweet?text=' + encodeURI('Support: ') + '&url=' + encodeURI(org.website) + '&via=thetogetherlist',
+	        facebook = 'https://www.facebook.com/sharer.php?u=' + encodeURI(org.website),
+	        tumblr = 'http://tumblr.com/widgets/share/tool?title=' + encodeURI(org.name) + '&canonicalUrl=' + encodeURI(org.website) + '&caption=' + encodeURI(org.description),
+	        email = 'mailto:?&subject=Check out ' + org.name + '&body=' + encodeURI([org.website, org.description].join('\n\n'));
+	    return '\n      <li><a href="' + twitter + '" title="Share via Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>\n      <li><a href="' + facebook + '" title="Share via Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>\n      <li><a href="' + tumblr + ' title="Share via Tumblr" target="_blank"><i class="fa fa-tumblr"></i></a></li>\n      <li><a href="' + email + '" title="Share via Email" target="_blank"><i class="fa fa-envelope"></i></a></li>\n    ';
+	  }
+	};
+	
+	exports.default = render;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _lunr = __webpack_require__(8);
+	
+	var _lunr2 = _interopRequireDefault(_lunr);
+	
+	var _underscore = __webpack_require__(2);
+	
+	var _underscore2 = _interopRequireDefault(_underscore);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var search = {
+	  index: function index(items) {
+	    var _this = this;
+	
+	    this._index = (0, _lunr2.default)(function () {
+	      this.field('name', { boost: 10 });
+	      this.field('body');
+	      this.field('state');
+	      this.field('categories');
+	      this.ref('id');
+	    });
+	
+	    _underscore2.default.each(items, function (item, i) {
+	      _this._index.add({
+	        id: i,
+	        name: item.name,
+	        body: item.description,
+	        categories: item.categories.join(', '),
+	        state: item.state
+	      });
+	    });
+	  },
+	
+	  filter: function filter(items, filters) {
+	    return _underscore2.default.chain(items).filter(function (item) {
+	      return item.rating >= filters.rating && _underscore2.default.every(filters.categories, function (cat) {
+	        return _underscore2.default.contains(item.categories, cat);
+	      }) && _underscore2.default.every(filters.subcategories, function (cat) {
+	        return _underscore2.default.contains(item.subcategories, cat);
+	      }) && _underscore2.default.every(filters.services, function (service) {
+	        return _underscore2.default.contains(item.services, service);
+	      }) && _underscore2.default.every(filters.flags, function (flag) {
+	        return item[flag];
+	      }) && (!filters.state || item.state == filters.state);
+	    }).sortBy(function (item, i) {
+	      return filters.sortByRating ? item.rating * -1 : i;
+	    }).value();
+	  },
+	
+	  search: function search(query) {
+	    return this._index.search(query);
+	  }
+	};
+	
+	exports.default = search;
 
 /***/ }
 /******/ ]);
