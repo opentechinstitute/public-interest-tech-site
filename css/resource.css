@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$altColor".
-        on line 21 of css/resource.sass
+        on line 18 of css/resource.sass
 
-16: 	padding: 1em 0
-17: 	border-bottom: #CCC solid 2px
-18: 	a, a:hover, a:active
-19: 		text-decoration: none
-20: 	a:hover
-21: 		color: $altColor
-22: 	h1
-23: 		color: $primaryColor
-24: 		font-weight: 700
-25: 		font-size: 1.4em
-26: 		line-height: 1.6em
+13: 	padding: 1em 0
+14: 	border-bottom: #CCC solid 2px
+15: 	a, a:hover, a:active
+16: 		text-decoration: none
+17: 	a:hover
+18: 		color: $altColor
+19: 	h1
+20: 		color: $primaryColor
+21: 		font-weight: 700
+22: 		font-size: 1.4em
+23: 		line-height: 1.6em
 
 Backtrace:
-css/resource.sass:21
+css/resource.sass:18
 /Users/mayawagon/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Users/mayawagon/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
 /Users/mayawagon/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -77,4 +77,4 @@ css/resource.sass:21
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$altColor\".\A         on line 21 of css/resource.sass\A \A 16: 	padding: 1em 0\A 17: 	border-bottom: #CCC solid 2px\A 18: 	a, a:hover, a:active\A 19: 		text-decoration: none\A 20: 	a:hover\A 21: 		color: $altColor\A 22: 	h1\A 23: 		color: $primaryColor\A 24: 		font-weight: 700\A 25: 		font-size: 1.4em\A 26: 		line-height: 1.6em"; }
+  content: "Error: Undefined variable: \"$altColor\".\A         on line 18 of css/resource.sass\A \A 13: 	padding: 1em 0\A 14: 	border-bottom: #CCC solid 2px\A 15: 	a, a:hover, a:active\A 16: 		text-decoration: none\A 17: 	a:hover\A 18: 		color: $altColor\A 19: 	h1\A 20: 		color: $primaryColor\A 21: 		font-weight: 700\A 22: 		font-size: 1.4em\A 23: 		line-height: 1.6em"; }

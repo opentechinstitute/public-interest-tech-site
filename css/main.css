@@ -214,23 +214,23 @@ header {
     font-size: 1.8em; }
 
 .header-bar {
-  color: #415851;
+  color: #FFF;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1; }
   .header-bar a, .header-bar a:visited {
-    color: #fefef1;
+    color: #FFF;
     text-decoration: none; }
     .header-bar a:hover, .header-bar a:visited:hover {
-      color: #fefef1;
+      color: #FFF;
       text-decoration: none; }
   .header-bar .submit-button, .header-bar .submit-button:visited {
     padding: 0.5em;
-    border: 2px solid #fefef1; }
+    border: 2px solid #FFF; }
     .header-bar .submit-button:hover, .header-bar .submit-button:visited:hover {
       background-color: #7ed4c6;
-      border: 2px solid #fefef1;
+      border: 2px solid #fff;
       text-decoration: none; }
   .header-bar .main-nav .active {
     background-color: #85d7c9; }
@@ -267,8 +267,7 @@ header {
   font-size: 2.8em;
   text-align: left;
   line-height: 135%;
-  color: #fefef1;
-  border-bottom: 1px #fefef1 solid;
+  border-bottom: 1px #FFF solid;
   padding-bottom: 0.5em;
   position: absolute;
   bottom: 0; }
@@ -581,10 +580,6 @@ footer {
 
   .results {
     padding-bottom: 3em; } }
-.resources {
-  width: 40em;
-  margin: 0 auto; }
-
 .resource {
   width: 100%;
   line-height: 1.4em;
@@ -611,7 +606,7 @@ footer {
   background-color: #fbf5e4;
   padding: 2em;
   margin: 1em 0;
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 1.5em; }
   .annotation h4 {
     font-style: italic;
