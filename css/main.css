@@ -89,7 +89,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Source Sans Pro", "Space Mono", "Inconsolata", "Courier", monospace; }
 
 h1 {
-  font-weight: 300; }
+  font-weight: 300;
+  font-size: 1.4em;
+  line-height: 2.8em; }
 
 h2 {
   font-size: 1.4em; }
@@ -170,6 +172,18 @@ b {
   font-size: 1.5em;
   background-color: transparent;
   color: #415851; }
+  .search-input::-webkit-input-placeholder {
+    color: #fefef1;
+    opacity: 0.7; }
+  .search-input:-moz-placeholder {
+    color: #fefef1;
+    opacity: 0.7; }
+  .search-input::-moz-placeholder {
+    color: #fefef1;
+    opacity: 0.7; }
+  .search-input:-ms-input-placeholder {
+    color: #fefef1;
+    opacity: 0.7; }
 
 .search-wrapper {
   position: relative; }
@@ -188,9 +202,9 @@ a, a:visited {
 
 header {
   color: #444;
-  background: #5fcab8;
+  background-color: #5fcab8;
   background-size: cover;
-  background-position: top center;
+  background-position: center center;
   box-shadow: 0px 2px 25px 0px rgba(0, 0, 0, 0.32); }
   header h1 a, header h1 a:visited, header h1 a:hover {
     color: #fff !important;
@@ -198,14 +212,8 @@ header {
   header .logo {
     float: left;
     font-size: 1.8em; }
-  header img {
-    width: 32px;
-    margin-right: 0.1em;
-    vertical-align: middle;
-    margin-top: -2px; }
 
 .header-bar {
-  background-color: #5fcab8;
   color: #415851;
   top: 0;
   left: 0;
@@ -217,10 +225,6 @@ header {
     .header-bar a:hover, .header-bar a:visited:hover {
       color: #fefef1;
       text-decoration: none; }
-  .header-bar img {
-    width: 42px;
-    vertical-align: middle;
-    margin-right: 0.5em; }
   .header-bar .submit-button, .header-bar .submit-button:visited {
     padding: 0.5em;
     border: 2px solid #fefef1; }
@@ -228,10 +232,8 @@ header {
       background-color: #7ed4c6;
       border: 2px solid #fefef1;
       text-decoration: none; }
-  .header-bar .main-nav {
-    height: 100%; }
-    .header-bar .main-nav .active {
-      background-color: #85d7c9; }
+  .header-bar .main-nav .active {
+    background-color: #85d7c9; }
   .header-bar nav ul {
     height: 100%;
     margin: 0;
@@ -241,7 +243,7 @@ header {
     /* This aligns items to the end line on main-axis */
     justify-content: flex-start; }
   .header-bar nav li {
-    padding: 2em 2em; }
+    padding: 1.5em 2em; }
     .header-bar nav li:hover {
       background-color: #85d7c9; }
   .header-bar .header-bar-left,
@@ -254,11 +256,11 @@ header {
   .header-bar .header-bar-left {
     flex: 1; }
   .header-bar .header-bar-top {
-    height: 11em;
+    min-height: 11em;
     width: 100%;
     position: relative; }
   .header-bar .header-bar-bottom {
-    height: 5.5em;
+    height: 4em;
     width: 100%; }
 
 .title {
@@ -276,6 +278,8 @@ footer {
   color: #415851;
   padding: 3em 0;
   display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
   bottom: 0;
   left: 0;
   right: 0;
@@ -370,9 +374,6 @@ footer {
       display: block;
       float: none !important;
       text-align: center; }
-    .header-bar .get-involved li {
-      float: none;
-      display: inline-block; }
     .header-bar h1 {
       margin-bottom: 1em; }
 
@@ -573,18 +574,22 @@ footer {
     width: 49.5%; }
 
   .results {
-    padding-bottom: 12em; } }
+    padding-bottom: 3em; } }
 @media screen and (max-width: 690px) {
   .result {
     width: 100%; }
 
   .results {
-    padding-bottom: 12em; } }
+    padding-bottom: 3em; } }
+.resources {
+  width: 40em;
+  margin: 0 auto; }
+
 .resource {
   width: 100%;
   line-height: 1.4em;
   padding: 1em 0;
-  border-bottom: #415851 solid 2px; }
+  border-bottom: #CCC solid 2px; }
   .resource a, .resource a:hover, .resource a:active {
     text-decoration: none; }
   .resource a:hover {
@@ -599,6 +604,8 @@ footer {
   .resource h3 {
     font-style: italic;
     font-size: 1.1em; }
+  .resource:last-child {
+    border-bottom: none; }
 
 .annotation {
   background-color: #fbf5e4;
@@ -637,7 +644,8 @@ footer {
         font-size: 1em; }
   .about-intro aside, .faq aside {
     flex: 2;
-    color: #555; }
+    color: #555;
+    margin-top: 5em; }
 
 .about-intro article li {
   margin: 0 0 0.8em 0; }
@@ -649,7 +657,7 @@ footer {
 
 .about-letter {
   padding-top: 1em;
-  padding-bottom: 12em; }
+  padding-bottom: 10em; }
   .about-letter p {
     margin: 1em 0;
     color: #555;
@@ -669,8 +677,7 @@ footer {
 
 .faq-questions, .resources-index {
   padding-bottom: 2em;
-  margin-bottom: 4em;
-  border-bottom: 1px solid #d7d7d7; }
+  margin-bottom: 4em; }
   .faq-questions li, .resources-index li {
     line-height: 1.4; }
 

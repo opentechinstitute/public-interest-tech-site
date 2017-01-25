@@ -3,7 +3,7 @@ import util from './Util';
 
 const render = {
   result: function(data) {
-    var resource = '<li class="resource"><article><a href="' + data.url + '"><h1>' + data.name + '</h1></a>';
+    var resource = '<li class="resource"><article class="entry"><div class="meta"><a href="' + data.url + '"><h1>' + data.name + '</h1></a>';
     if (data.author.length > 0) {
       resource = resource + '<h2>by ' + data.author + '</h2>';
     }
@@ -14,14 +14,14 @@ const render = {
       resource = resource + '<h3>' + data.date + '</h3>';
     }
     if (data.categories.length > 0) {
-      resource = resource + '<h3>Tags: ' + data.categories.join(', ') + '</h3>';
+      resource = resource + '<h3>Tags: ' + data.categories.join(', ') + '</h3></div>';
     }
     if (data.annotation.length > 0) {
       resource = resource + '<aside class="annotation"><p>' + data.annotation + '</p>';
       if (data.annotationauthor.length > 0) {
         resource = resource + '<h4>—' + data.annotationauthor + '</h4>';
       }
-      resource = resource + '</aside';
+      resource = resource + '</aside>';
     }
     resource = resource + '</article></li>';
     // var ifdead = "";
