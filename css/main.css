@@ -580,6 +580,10 @@ footer {
 
   .results {
     padding-bottom: 3em; } }
+.resources {
+  width: 50em;
+  margin: 0 auto 0 0; }
+
 .resource {
   width: 100%;
   line-height: 1.4em;
