@@ -196,9 +196,11 @@ b {
     font-size: 2em; }
 
 a, a:visited {
-  color: #000; }
+  color: #319282;
+  text-decoration: none; }
   a:hover, a:visited:hover {
-    color: #319282; }
+    color: #5fcab8;
+    text-decoration: none; }
 
 header {
   color: #444;
