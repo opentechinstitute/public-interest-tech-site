@@ -4,7 +4,7 @@ Error: Undefined variable: "$primaryColor".
 
 4: .about-intro, .faq
 5:   display: flex
-6:   border-bottom: 1px solid #d7d7d7
+6:   border-bottom: 1px solid #ccc
 7:   a, a:visited
 8:     text-decoration: none
 9:     color: $primaryColor
@@ -77,4 +77,4 @@ css/about.sass:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$primaryColor\".\A         on line 9 of css/about.sass\A \A 4: .about-intro, .faq\A 5:   display: flex\A 6:   border-bottom: 1px solid #d7d7d7\A 7:   a, a:visited\A 8:     text-decoration: none\A 9:     color: $primaryColor\A 10:     font-weight: bold\A 11:   p\A 12:     margin: 0 0 1.5em 0\A 13:     line-height: 1.6\A 14:   article"; }
+  content: "Error: Undefined variable: \"$primaryColor\".\A         on line 9 of css/about.sass\A \A 4: .about-intro, .faq\A 5:   display: flex\A 6:   border-bottom: 1px solid #ccc\A 7:   a, a:visited\A 8:     text-decoration: none\A 9:     color: $primaryColor\A 10:     font-weight: bold\A 11:   p\A 12:     margin: 0 0 1.5em 0\A 13:     line-height: 1.6\A 14:   article"; }

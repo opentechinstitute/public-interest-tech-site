@@ -625,7 +625,7 @@ footer {
 
 .about-intro, .faq {
   display: flex;
-  border-bottom: 1px solid #d7d7d7; }
+  border-bottom: 1px solid #ccc; }
   .about-intro a, .about-intro a:visited, .faq a, .faq a:visited {
     text-decoration: none;
     color: #319282;
@@ -658,11 +658,24 @@ footer {
 
 .about-letter {
   padding-top: 1em;
-  padding-bottom: 10em; }
+  padding-bottom: 10em;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc; }
   .about-letter p {
     margin: 1em 0;
     color: #555;
     line-height: 1.6; }
+
+.org {
+  display: flex;
+  padding: 1em 0; }
+  .org .orglogo {
+    flex: 1;
+    padding: 1em 1em 1em 0; }
+    .org .orglogo img {
+      max-width: 10em; }
+  .org p {
+    flex: 3; }
 
 .faq aside li {
   font-size: 1.2em;
