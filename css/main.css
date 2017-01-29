@@ -142,7 +142,7 @@ b {
     font-size: 12px; }
 
 .filters-all {
-  background: #319282;
+  background: #5fcab8;
   color: #fff;
   padding: 1em 0; }
   .filters-all button {
@@ -331,7 +331,7 @@ footer {
   display: flex; }
 
 .filters-all-content {
-  display: none; }
+  display: block; }
   .filters-all-content > .filters:first-child {
     margin-top: 1em; }
 
