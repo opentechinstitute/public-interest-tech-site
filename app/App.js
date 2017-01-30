@@ -51,10 +51,10 @@ class App {
         //obj.number = util.parseNumber(obj.numbers);
         obj.dead = util.parseBool(obj.dead);
         obj.services = [];
-        if (obj.donatelink) obj.services.push('donations');
-        if (obj.volunteerlink) obj.services.push('volunteers');
-        if (obj.contributelink) obj.services.push('open source contributions');
-        if (obj.joblink) obj.services.push('applications');
+        if (obj.donatelink) obj.services.push('<a href="' + obj.donatelink + '">donations</a>');
+        if (obj.volunteerlink) obj.services.push('<a href="' + obj.volunteerlink + '">volunteers</a>');
+        if (obj.contributelink) obj.services.push('<a href="' + obj.contributelink + '">open source contributions</a>');
+        if (obj.joblink) obj.services.push('<a href="' + obj.joblink + '">applications</a>');
         obj.services = obj.services.concat(obj.additionalServices);
         obj.state = obj.location; //a cheat to make it so spreadsheet header can be "location" while variable is still "state" (leftover from togetherlist)
 
