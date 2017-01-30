@@ -48,9 +48,6 @@ const render = {
       if (data.categories.length > 0) {
         result += '<h5>' + data.categories.join(', ') + '</h5>';
       }
-      if (data.donatelink.length > 0) {
-        result += '<h5><span class="result-accepting" data-accepting="donations">TESTING</span></h5>';
-      }
       if (data.website.length > 0) {
         result += '<div class="result-actions"><a target="_blank" href="' + data.website + '">Visit their website</a></div>'; 
       }

@@ -495,17 +495,16 @@ footer {
   bottom: 0;
   left: 0;
   right: 0; }
-  .result-actions a {
+  .result-actions a, .result-actions a:visited {
     display: block;
     flex: 1;
     text-align: center;
-    background: #5fcab8;
     text-decoration: none;
-    padding: 1em; }
-    .result-actions a:hover {
-      color: #fff; }
-    .result-actions a:last-child {
-      background: #f5743d; }
+    padding: 1em;
+    background: #f8e30d;
+    color: #415851; }
+    .result-actions a:hover, .result-actions a:visited:hover {
+      background-color: #fbee70; }
 
 .result-service {
   font-weight: bold;
@@ -573,6 +572,8 @@ footer {
   border-color: #d3b49c; }
   .dead h2, .dead h3, .dead a, .dead a:visited, .dead a:hover, .dead a:visited:hover, .dead .result-description, .dead p {
     color: #c39979; }
+  .dead .result-actions a {
+    color: #415851; }
 
 @media screen and (max-width: 990px) {
   .result {

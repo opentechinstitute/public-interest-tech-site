@@ -112,17 +112,16 @@ $resultHeight: 16em
   bottom: 0
   left: 0
   right: 0
-  a
+  a, a:visited
     display: block
     flex: 1
     text-align: center
-    background: $altColor
     text-decoration: none
     padding: 1em
-    &:hover
-      color: #fff
-    &:last-child
-      background: $altSecondaryColor
+    background: $secondaryColor
+    color: $black
+    &:hover 
+      background-color: lighten($secondaryColor, 20%)
 
 .result-service
   font-weight: bold
@@ -189,6 +188,8 @@ $resultHeight: 16em
   border-color: lighten(#c39979, 10%)
   h2, h3, a, a:visited, a:hover, a:visited:hover, .result-description, p
     color: #c39979
+  .result-actions a
+    color: $black
 
 @media screen and (max-width: 990px)
   .result
