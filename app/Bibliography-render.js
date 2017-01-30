@@ -5,13 +5,13 @@ const render = {
   result: function(data) {
     var resource = '<li class="resource"><article class="entry"><div class="meta"><a href="' + data.url + '"><h1>' + data.name + '</h1></a>';
     if (data.author.length > 0) {
-      resource = resource + '<h2>by ' + data.author + '</h2>';
-    }
-    if (data.whatisit.length > 0) {
-      resource = resource + '<h3>' + data.whatisit + '</h3>';
+      resource = resource + '<h2>' + data.author + '</h2>';
     }
     if (data.date.length > 0) {
       resource = resource + '<h3>' + data.date + '</h3>';
+    }
+    if (data.whatisit.length > 0) {
+      resource = resource + '<h3>' + data.whatisit + '</h3>';
     }
     if (data.categories.length > 0) {
       resource = resource + '<h3>Tags: ' + data.categories.join(', ') + '</h3></div>';

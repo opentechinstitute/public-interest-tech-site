@@ -376,7 +376,7 @@ footer {
       float: none !important;
       text-align: center; }
     .header-bar h1 {
-      margin-bottom: 1em; }
+      font-size: 2.2em; }
 
   header .content {
     padding: 0; } }
@@ -444,6 +444,10 @@ footer {
         text-decoration: underline !important; }
       .result-info h3 a:first-child {
         text-decoration: none; }
+
+.tag {
+  background-color: #fefef1;
+  color: #415851; }
 
 .result-stats {
   position: absolute;
