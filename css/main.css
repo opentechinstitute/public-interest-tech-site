@@ -91,8 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-weight: 300;
-  font-size: 1.4em;
-  line-height: 2.8em; }
+  font-size: 1.4em; }
 
 h2 {
   font-size: 1.4em; }
@@ -602,14 +601,14 @@ footer {
     color: #5fcab8; }
   .resource h1 {
     color: #319282;
-    font-weight: 700;
-    font-size: 1.4em;
-    line-height: 1.6em; }
+    font-size: 1.2em; }
   .resource h2 {
-    font-size: 1.1em; }
+    font-size: 1.1em;
+    display: none; }
   .resource h3 {
     font-style: italic;
-    font-size: 1.1em; }
+    font-size: 1.1em;
+    display: none; }
   .resource:last-child {
     border-bottom: none; }
 
@@ -618,7 +617,8 @@ footer {
   padding: 2em;
   margin: 1em 0;
   font-size: 1em;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+  display: none; }
   .annotation h4 {
     font-style: italic;
     font-weight: 700;
