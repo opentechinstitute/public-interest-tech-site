@@ -14087,6 +14087,7 @@
 	        subcategories: [],
 	        services: [],
 	        state: false,
+	        accepts: [],
 	        sortByRating: false
 	      };
 	    }
@@ -14112,18 +14113,26 @@
 	          obj.subcategories = _underscore2.default.compact([obj.subcategory1, obj.subcategory2]);
 	          obj.additionalServices = _underscore2.default.compact([obj.filter1, obj.filter2, obj.filter3]);
 	          obj.description = obj.description100characters;
-	          obj.descriptionlength = obj.descriptionlength;
+	          obj.howtech = obj.howtheyusetech100characters;
+	          obj.accepts = [];
+	          if (obj.donatelink) obj.accepts.push('donations');
+	          if (obj.volunteerlink) obj.accepts.push('volunteers');
+	          if (obj.contributelink) obj.accepts.push('open source contributions');
+	          if (obj.joblink) obj.accepts.push('job applications');
+	          if (obj.fellowshiplink) obj.accepts.push('fellowship applications');
 	          obj.donatelink = _Util2.default.trim(obj.donatelink);
 	          obj.volunteerlink = _Util2.default.trim(obj.volunteerlink);
 	          obj.contributelink = _Util2.default.trim(obj.contributelink);
 	          obj.joblink = _Util2.default.trim(obj.joblink);
+	          obj.fellowshiplink = _Util2.default.trim(obj.fellowshiplink);
 	          //obj.number = util.parseNumber(obj.numbers);
 	          obj.dead = _Util2.default.parseBool(obj.dead);
 	          obj.services = [];
-	          if (obj.donatelink) obj.services.push('donations');
-	          if (obj.volunteerlink) obj.services.push('volunteers');
-	          if (obj.contributelink) obj.services.push('open source contributions');
-	          if (obj.joblink) obj.services.push('applications');
+	          if (obj.donatelink) obj.services.push('<a href="' + obj.donatelink + '">donations</a>');
+	          if (obj.volunteerlink) obj.services.push('<a href="' + obj.volunteerlink + '">volunteers</a>');
+	          if (obj.contributelink) obj.services.push('<a href="' + obj.contributelink + '">open source contributions</a>');
+	          if (obj.joblink) obj.services.push('<a href="' + obj.joblink + '">job applications</a>');
+	          if (obj.fellowshiplink) obj.services.push('<a href="' + obj.fellowshiplink + '">fellowship applications</a>');
 	          obj.services = obj.services.concat(obj.additionalServices);
 	          obj.state = obj.location; //a cheat to make it so spreadsheet header can be "location" while variable is still "state" (leftover from togetherlist)
 	
@@ -14144,6 +14153,12 @@
 	        var service = (0, _jquery2.default)(this).data('service');
 	        (0, _jquery2.default)(this).attr('disabled', !_underscore2.default.some(results, function (r) {
 	          return _underscore2.default.contains(r.services, service);
+	        }));
+	      });
+	      (0, _jquery2.default)('.filters-accepting button').each(function () {
+	        var acc = (0, _jquery2.default)(this).data('accepting');
+	        (0, _jquery2.default)(this).attr('disabled', !_underscore2.default.some(results, function (r) {
+	          return _underscore2.default.contains(r.accepting, acc);
 	        }));
 	      });
 	      (0, _jquery2.default)('.filters-subcategories button').each(function () {
@@ -14193,26 +14208,39 @@
 	      });
 	    }
 	  }, {
+	    key: 'loadAccepting',
+	    value: function loadAccepting() {
+	      var _this5 = this;
+	
+	      _Sheet2.default.load(SPREADSHEET_ID, 6, function (rows) {
+	        _this5.accepting = _underscore2.default.map(rows, function (row) {
+	          var acc = _Sheet2.default.parseRow(row).acc;
+	          (0, _jquery2.default)('.filters-accepting').append('<button data-accepting="' + acc + '">' + _Util2.default.slugify(acc) + '</button>');
+	          return acc;
+	        });
+	      });
+	    }
+	  }, {
 	    key: 'bindRatingFilter',
 	    value: function bindRatingFilter() {
-	      var _this5 = this;
+	      var _this6 = this;
 	
 	      (0, _jquery2.default)('.filters-rating').on('click', function (ev) {
 	        var el = (0, _jquery2.default)(ev.target);
 	        el.toggleClass('selected');
-	        _this5.filters.sortByRating = el.hasClass('selected');
-	        _this5.renderResults();
+	        _this6.filters.sortByRating = el.hasClass('selected');
+	        _this6.renderResults();
 	      });
 	    }
 	  }, {
 	    key: 'bindSharing',
 	    value: function bindSharing() {
-	      var _this6 = this;
+	      var _this7 = this;
 	
 	      (0, _jquery2.default)('.results').on('click', '.action-share', function (ev) {
 	        var id = (0, _jquery2.default)(ev.target).data('id'),
 	            parent = (0, _jquery2.default)(ev.target).closest('.result'),
-	            org = _this6.orgs[id],
+	            org = _this7.orgs[id],
 	            html = _Render2.default.sharing(org);
 	        parent.find('.result-sharing').html(html).show();
 	      }).on('mouseleave', '.result', function (ev) {
@@ -14222,30 +14250,30 @@
 	  }, {
 	    key: 'bindFilter',
 	    value: function bindFilter(sel, dataName, filterType) {
-	      var _this7 = this;
+	      var _this8 = this;
 	
 	      (0, _jquery2.default)(sel).on('click', 'button', function (ev) {
 	        var el = (0, _jquery2.default)(ev.target),
 	            filter = el.data(dataName);
 	        el.toggleClass('selected');
 	        if (el.hasClass('selected')) {
-	          _this7.filters[filterType].push(filter);
+	          _this8.filters[filterType].push(filter);
 	        } else {
-	          _this7.filters[filterType] = _underscore2.default.without(_this7.filters[filterType], filter);
+	          _this8.filters[filterType] = _underscore2.default.without(_this8.filters[filterType], filter);
 	        }
-	        _this7.renderResults();
+	        _this8.renderResults();
 	        return false;
 	      });
 	    }
 	  }, {
 	    key: 'bindClear',
 	    value: function bindClear() {
-	      var _this8 = this;
+	      var _this9 = this;
 	
 	      (0, _jquery2.default)('.clear-filters').on('click', function (ev) {
-	        _this8.results = _this8.orgs;
-	        _this8.resetFilters();
-	        _this8.renderResults();
+	        _this9.results = _this9.orgs;
+	        _this9.resetFilters();
+	        _this9.renderResults();
 	        (0, _jquery2.default)('.selected').removeClass('selected');
 	        (0, _jquery2.default)('input[name=search]').val('');
 	      });
@@ -14253,32 +14281,41 @@
 	  }, {
 	    key: 'bindSearch',
 	    value: function bindSearch() {
-	      var _this9 = this;
+	      var _this10 = this;
 	
 	      (0, _jquery2.default)('input[name=search]').on('keyup', function (ev) {
-	        _this9.search();
+	        _this10.search();
 	      });
 	    }
 	  }, {
 	    key: 'bindStateFilter',
 	    value: function bindStateFilter() {
-	      var _this10 = this;
+	      var _this11 = this;
 	
 	      (0, _jquery2.default)('.results').on('click', '.result-state', function (ev) {
 	        var state = (0, _jquery2.default)(ev.target).data('state');
-	        _this10.filters.state = state;
-	        _this10.renderResults();
+	        _this11.filters.state = state;
+	        _this11.renderResults();
 	      });
 	    }
+	
+	    // bindAcceptingFilter() {
+	    //   $('.results').on('click', '.result-accepting', ev => {
+	    //     var acc = $(ev.target).data('accepting');
+	    //     this.filters.acc = acc;
+	    //     this.renderResults();
+	    //   });
+	    // }
+	
 	  }, {
 	    key: 'bindSearchDropdown',
 	    value: function bindSearchDropdown() {
-	      var _this11 = this;
+	      var _this12 = this;
 	
 	      (0, _jquery2.default)('.search-dropdown').on('click', 'li', function (ev) {
 	        var name = (0, _jquery2.default)(ev.target).data('name');
 	        (0, _jquery2.default)('input[name=search]').val(name);
-	        _this11.search();
+	        _this12.search();
 	        (0, _jquery2.default)('.search-dropdown').hide();
 	      });
 	      (0, _jquery2.default)('.search-wrapper').on('mouseleave', function (ev) {
@@ -14295,12 +14332,12 @@
 	  }, {
 	    key: 'search',
 	    value: function search() {
-	      var _this12 = this;
+	      var _this13 = this;
 	
 	      var query = (0, _jquery2.default)('input[name=search]').val();
 	      if (query) {
 	        this.results = _underscore2.default.map(_Search2.default.search(query), function (res) {
-	          return _this12.orgs[res.ref];
+	          return _this13.orgs[res.ref];
 	        });
 	        this.renderResults();
 	        this.renderSearchNames();
@@ -14340,14 +14377,15 @@
 	  }, {
 	    key: 'run',
 	    value: function run() {
-	      var _this13 = this;
+	      var _this14 = this;
 	
 	      this.loadOrgs(function () {
-	        _this13.results = _this13.orgs;
-	        _this13.renderResults();
-	        _Search2.default.index(_this13.orgs);
+	        _this14.results = _this14.orgs;
+	        _this14.renderResults();
+	        _Search2.default.index(_this14.orgs);
 	      });
 	      this.loadServices();
+	      this.loadAccepting();
 	      this.loadCategories();
 	      this.loadSubCategories();
 	
@@ -14358,6 +14396,7 @@
 	      this.bindFiltersToggle();
 	      this.bindSearchDropdown();
 	      this.bindStateFilter();
+	      //this.bindAcceptingFilter();
 	      this.bindFilter('.filters-flags', 'flag', 'flags');
 	      this.bindFilter('.filters-categories', 'category', 'categories');
 	      this.bindFilter('.filters-services', 'service', 'services');
@@ -14392,26 +14431,97 @@
 	
 	var render = {
 	  result: function result(data) {
-	    var ifdead = "";
-	    if (data.dead == true) {
-	      var ifdead = "dead";
-	      var tense = "was";
-	    } else {
-	      var tense = "is";
-	    }
-	    if (data.services.length > 0) {
-	      var ifaccepting = " that accepts";
-	    } else {
-	      var ifaccepting = "";
-	    }
-	    if (data.descriptionlength < 20 || data.descriptionlength > 100) {
+	    // var ifdead = "";
+	    // if (data.dead == true) {
+	    //   var ifdead = "dead";
+	    //   var tense = "was";
+	    // }
+	    if (data.description.length < 20 || data.description.length > 100) {
 	      return;
-	    } else {
-	      return '\n        <li class="result ' + ifdead + '">\n            <div class="result-preview">\n              <h2><span>' + _Util2.default.truncate(data.name, 40) + '</span></h2>\n              <p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>\n            </div>\n            <div class="result-info ' + ifdead + '">\n                <h3><a href="' + (data.website ? data.website : '#') + '" target="_blank">' + data.name + '</a> ' + tense + ' ' + data.whatisit + ifaccepting + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
-	        return ' <span class="result-service">' + s.toLowerCase().replace('esl', 'ESL') + '</span>';
-	      })) + (data.additionalServices.length > 0 ? '' : '') + '.</h3>\n                <div class="result-meta">\n                  <div class="result-meta-info">\n                    ' + (data.state ? '<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>' : '') + '\n                    <h5>' + data.categories.join(', ') + '</h5>\n                  </div>\n                  <div class="result-meta-share">\n                    ' + (data.number ? '<a href="tel:' + data.number + '"><i class="fa fa-phone"></i></a>' : '') + '\n                    <i class="fa fa-share-alt action-share" data-id="' + data.id + '"></i>\n                  </div>\n                </div>\n                <div class="result-actions">\n                  ' + (data.donatelink ? '<a target="_blank" href="' + data.donatelink + '">Donate</a>' : '') + '\n                  ' + (data.volunteerlink ? '<a target="_blank" href="' + data.volunteerlink + '">Volunteer</a>' : '') + '\n                  ' + (data.contributelink ? '<a target="_blank" href="' + data.contributelink + '">Contribute</a>' : '') + '\n                  ' + (data.joblink ? '<a target="_blank" href="' + data.joblink + '">Apply</a>' : '') + '\n                </div>\n            </div>\n            <div class="result-sharing"></div>\n        </li>';
 	    }
+	    if (data.dead == true) {
+	      var result = '<li class="result dead"><div class="result-preview"><h2>' + _Util2.default.truncate(data.name, 40) + '</h2><p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>';
+	      if (data.howtechlength > 1) {
+	        result += '<p>How they used tech: ' + data.howtech + '</p>';
+	      }
+	      result += '</div><div class="result-info dead"><h3>This ' + data.whatisit + ' is no longer functioning, and is archived here for educational and research purposes.</h3>';
+	      if (data.state.length > 0) {
+	        result += '<h5>Was based in ' + data.state + '</h5>';
+	      }
+	      if (data.categories.length > 0) {
+	        result += '<h5>' + data.categories.join(', ') + '</h5>';
+	      }
+	      if (data.website.length > 0) {
+	        result += '<div class="result-actions"><a target="_blank" href="' + data.website + '">Visit their Website</a></div>';
+	      }
+	      result += '</div></li>';
+	      return result;
+	    } else {
+	      var result = '<li class="result"><div class="result-preview"><h2><span>' + _Util2.default.truncate(data.name, 40) + '</span></h2><p class="result-description">' + _Util2.default.truncate(data.description, 132) + '</p>';
+	      if (data.howtech.length > 1) {
+	        result += '<br><p>How they use tech: ' + data.howtech + '</p>';
+	      }
+	      result += '</div><div class="result-info">';
+	      if (data.services.length > 0) {
+	        result += '<h3>This ' + data.whatisit + ' accepts ' + _Util2.default.joinAnd(_underscore2.default.map(data.services, function (s) {
+	          return ' ' + s.toLowerCase().replace('esl', 'ESL');
+	        }));
+	        result += '.</h3>';
+	      } else {
+	        result += '<h3>Visit this ' + data.whatisit + '\'s <a class="result-service" href="' + data.website + '">website</a>.</h3>';
+	      }
+	      if (data.state.length > 0) {
+	        result += '<h5>Based in <span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>';
+	      }
+	      if (data.categories.length > 0) {
+	        result += '<h5>' + data.categories.join(', ') + '</h5>';
+	      }
+	      if (data.donatelink.length > 0) {
+	        result += '<h5><span class="result-accepting" data-accepting="donations">TESTING</span></h5>';
+	      }
+	      if (data.website.length > 0) {
+	        result += '<div class="result-actions"><a target="_blank" href="' + data.website + '">Visit their website</a></div>';
+	      }
+	      result += '</div></li>';
+	    }
+	    return result;
+	    // if (data.services.length > 0) {
+	    //   var ifaccepting = " accepts";
+	    // }
+	    // else {
+	    //   var ifaccepting = "";
+	    // }
+	    // else {
+	    //   return `
+	    //     <li class="result">
+	    //         <div class="result-preview">
+	    //           <h2><span>${util.truncate(data.name, 40)}</span></h2>
+	    //           <p class="result-description">${util.truncate(data.description, 132)}</p>
+	    //         </div>
+	    //         <div class="result-info">
+	    //             <h3>This ${data.whatisit}${ifaccepting}${util.joinAnd(_.map(data.services, s => ` <span class="result-service">${s.toLowerCase().replace('esl', 'ESL')}</span>`))}${data.additionalServices.length > 0 ? '' : ''}.</h3>
+	    //             <div class="result-meta">
+	    //               <div class="result-meta-info">
+	    //                 ${data.state ? `<h5><span class="result-meta-lead">Based in </span><span class="result-state" data-state="${data.state}">${data.state}</span></h5>` : ''}
+	    //                 <h5>${data.categories.join(', ')}</h5>
+	    //               </div>
+	    //             </div>
+	    //             <div class="result-actions">
+	    //               ${data.donatelink ? `<a target="_blank" href="${data.donatelink}">Donate</a>` : ''}
+	    //               ${data.volunteerlink ? `<a target="_blank" href="${data.volunteerlink}">Volunteer</a>` : ''}
+	    //               ${data.contributelink ? `<a target="_blank" href="${data.contributelink}">Contribute</a>` : ''}
+	    //               ${data.joblink ? `<a target="_blank" href="${data.joblink}">Apply</a>` : ''}
+	    //             </div>
+	    //         </div>
+	    //         <div class="result-sharing"></div>
+	    //     </li>`;
 	  },
+	
+	  // For buttons at bottom of each result:
+	  // ${data.donatelink ? `<a target="_blank" href="${data.donatelink}">Donate</a>` : ''}
+	  // ${data.volunteerlink ? `<a target="_blank" href="${data.volunteerlink}">Volunteer</a>` : ''}
+	  // ${data.contributelink ? `<a target="_blank" href="${data.contributelink}">Contribute</a>` : ''}
+	  // ${data.joblink ? `<a target="_blank" href="${data.joblink}">Apply</a>` : ''}
 	
 	  rating: function rating(_rating) {
 	    var els = [],

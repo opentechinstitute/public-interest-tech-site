@@ -12326,38 +12326,7 @@
 	      resource = resource + '</aside>';
 	    }
 	    resource = resource + '</article></li>';
-	    // var ifdead = "";
-	    // if (data.dead == true) {
-	    //   var ifdead = "dead";
-	    //   var tense = "was";
-	    // }
-	    // else {
-	    //   var tense = "is";
-	    // }
-	    // if (data.services.length > 0) {
-	    //   var ifaccepting = " that accepts";
-	    // }
-	    // else {
-	    //   var ifaccepting = "";
-	    // }
-	    // if (data.descriptionlength < 20 || data.descriptionlength > 100) {
-	    //   return
-	    // }
-	    // else {
 	    return resource;
-	    // '<li>
-	    //     <article class="resource">
-	    //         <a href="${data.url}"><h1>${data.name}</h1></a>
-	    //         <h2>by ${data.author}</h2>
-	    //         <h3>${data.whatisit}, ${data.date}</h3>
-	    //         <h3>Tags: ${data.categories.join(', ')}</h3>
-	    //         <aside class="annotation">  
-	    //             <p>${data.annotation}</p>
-	    //             <h4>—${data.annotationauthor}</h4>
-	    //         </aside>
-	    //     </article>
-	    // </li> `;
-	    // }
 	  },
 	
 	  rating: function rating(_rating) {
