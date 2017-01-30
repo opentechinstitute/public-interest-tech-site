@@ -43,7 +43,7 @@ class App {
         obj.subcategories = _.compact([obj.subcategory1, obj.subcategory2]);
         obj.additionalServices = _.compact([obj.filter1, obj.filter2, obj.filter3]);
         obj.description = obj.description100characters;
-        obj.descriptionlength = obj.descriptionlength;
+        obj.howtech = obj.howtheyusetech100characters;
         obj.donatelink = util.trim(obj.donatelink);
         obj.volunteerlink = util.trim(obj.volunteerlink);
         obj.contributelink = util.trim(obj.contributelink);

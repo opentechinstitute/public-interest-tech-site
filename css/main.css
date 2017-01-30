@@ -413,7 +413,7 @@ footer {
     padding: 0 0 0.5em 0;
     color: #319282;
     border-bottom: 1px solid #319282;
-    line-height: 4.4em;
+    line-height: 2.4em;
     hyphens: auto; }
     .result h2 span {
       display: inline-block;
@@ -473,7 +473,7 @@ footer {
 
 .result-meta {
   border-top: 1px solid #fefef1;
-  font-size: 0.7em;
+  font-size: 1em;
   line-height: 1.5;
   padding: 1em 0; }
 
@@ -484,7 +484,7 @@ footer {
   font-size: 1em;
   line-height: 1.5;
   color: #415851;
-  margin-top: 1.2em; }
+  margin-top: 0.6em; }
 
 .result-actions {
   font-size: 0.9em;
@@ -563,6 +563,9 @@ footer {
 .result-state {
   cursor: pointer; }
 
+.result-preview {
+  text-align: left; }
+
 .dead {
   background: #fefeec;
   color: #d3b49c;
@@ -572,7 +575,7 @@ footer {
 
 @media screen and (max-width: 990px) {
   .result {
-    width: 49.5%; }
+    width: 48%; }
 
   .results {
     padding-bottom: 3em; } }
