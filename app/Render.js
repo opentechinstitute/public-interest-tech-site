@@ -43,10 +43,13 @@ const render = {
         result += '<h3>Visit this ' + data.whatisit + '\'s <a class="result-service" href="' + data.website + '">website</a>.</h3>';
       }
       if (data.state.length > 0) {
-        result += '<h5>Based in ' + data.state + '</h5>';
+        result += '<h5>Based in <span class="result-state" data-state="' + data.state + '">' + data.state + '</span></h5>';
       }
       if (data.categories.length > 0) {
         result += '<h5>' + data.categories.join(', ') + '</h5>';
+      }
+      if (data.donatelink.length > 0) {
+        result += '<h5><span class="result-accepting" data-accepting="donations">TESTING</span></h5>';
       }
       if (data.website.length > 0) {
         result += '<div class="result-actions"><a target="_blank" href="' + data.website + '">Visit their website</a></div>'; 

@@ -86,7 +86,8 @@ html {
   color: #415851; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Source Sans Pro", "Space Mono", "Inconsolata", "Courier", monospace; }
+  font-family: "Source Sans Pro", "Space Mono", "Inconsolata", "Courier", monospace;
+  line-height: 140%; }
 
 h1 {
   font-weight: 300;
@@ -128,7 +129,7 @@ b {
     flex: 1;
     border: #fefef1 solid;
     padding: 1.2em 0.4em 1em 0.4em;
-    min-width: 10%;
+    min-width: 110px;
     font-size: 1em;
     text-align: center;
     color: #444;

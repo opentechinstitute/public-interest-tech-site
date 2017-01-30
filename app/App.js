@@ -21,6 +21,7 @@ class App {
       subcategories: [],
       services: [],
       state: false,
+      accepts: [],
       sortByRating: false
     };
   }
@@ -44,17 +45,25 @@ class App {
         obj.additionalServices = _.compact([obj.filter1, obj.filter2, obj.filter3]);
         obj.description = obj.description100characters;
         obj.howtech = obj.howtheyusetech100characters;
+        obj.accepts = [];
+        if (obj.donatelink) obj.accepts.push('donations');
+        if (obj.volunteerlink) obj.accepts.push('volunteers');
+        if (obj.contributelink) obj.accepts.push('open source contributions');
+        if (obj.joblink) obj.accepts.push('job applications');
+        if (obj.fellowshiplink) obj.accepts.push('fellowship applications');
         obj.donatelink = util.trim(obj.donatelink);
         obj.volunteerlink = util.trim(obj.volunteerlink);
         obj.contributelink = util.trim(obj.contributelink);
         obj.joblink = util.trim(obj.joblink);
+        obj.fellowshiplink = util.trim(obj.fellowshiplink);
         //obj.number = util.parseNumber(obj.numbers);
         obj.dead = util.parseBool(obj.dead);
         obj.services = [];
         if (obj.donatelink) obj.services.push('<a href="' + obj.donatelink + '">donations</a>');
         if (obj.volunteerlink) obj.services.push('<a href="' + obj.volunteerlink + '">volunteers</a>');
         if (obj.contributelink) obj.services.push('<a href="' + obj.contributelink + '">open source contributions</a>');
-        if (obj.joblink) obj.services.push('<a href="' + obj.joblink + '">applications</a>');
+        if (obj.joblink) obj.services.push('<a href="' + obj.joblink + '">job applications</a>');
+        if (obj.fellowshiplink) obj.services.push('<a href="' + obj.fellowshiplink + '">fellowship applications</a>');
         obj.services = obj.services.concat(obj.additionalServices);
         obj.state = obj.location; //a cheat to make it so spreadsheet header can be "location" while variable is still "state" (leftover from togetherlist)
 
@@ -74,6 +83,11 @@ class App {
        var service = $(this).data('service');
        $(this).attr('disabled',
          !_.some(results, r => _.contains(r.services, service)));
+     });
+    $('.filters-accepting button').each(function() {
+       var acc = $(this).data('accepting');
+       $(this).attr('disabled',
+         !_.some(results, r => _.contains(r.accepting, acc)));
      });
     $('.filters-subcategories button').each(function() {
       var cat = $(this).data('subcategory');
@@ -111,6 +125,17 @@ class App {
         $('.filters-services').append(
           `<button data-service="${service}">${util.slugify(service)}</button>`);
         return service;
+      });
+    });
+  }
+
+  loadAccepting() {
+    sheet.load(SPREADSHEET_ID, 6, rows => {
+      this.accepting = _.map(rows, row => {
+        var acc = sheet.parseRow(row).acc;
+        $('.filters-accepting').append(
+          `<button data-accepting="${acc}">${util.slugify(acc)}</button>`);
+        return acc;
       });
     });
   }
@@ -175,6 +200,14 @@ class App {
     });
   }
 
+  // bindAcceptingFilter() {
+  //   $('.results').on('click', '.result-accepting', ev => {
+  //     var acc = $(ev.target).data('accepting');
+  //     this.filters.acc = acc;
+  //     this.renderResults();
+  //   });
+  // }
+
   bindSearchDropdown() {
     $('.search-dropdown').on('click', 'li', ev => {
       var name = $(ev.target).data('name');
@@ -238,6 +271,7 @@ class App {
       search.index(this.orgs);
     });
     this.loadServices();
+    this.loadAccepting();
     this.loadCategories();
     this.loadSubCategories();
 
@@ -248,6 +282,7 @@ class App {
     this.bindFiltersToggle();
     this.bindSearchDropdown();
     this.bindStateFilter();
+    //this.bindAcceptingFilter();
     this.bindFilter('.filters-flags', 'flag', 'flags');
     this.bindFilter('.filters-categories', 'category', 'categories');
     this.bindFilter('.filters-services', 'service', 'services');
