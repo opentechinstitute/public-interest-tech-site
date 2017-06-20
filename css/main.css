@@ -436,7 +436,9 @@ footer {
   .result-info h3 {
     padding: 0 0 1em 0;
     font-size: 1.1em;
-    line-height: 1.4; }
+    line-height: 1.4;
+    border-bottom: 1px solid white;
+    margin-bottom: 1em; }
     .result-info h3 a {
       font-weight: bold; }
       .result-info h3 a:hover {
