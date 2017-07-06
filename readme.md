@@ -1,6 +1,8 @@
 # About this project
 
-This is the site for the Public Interest Technology Project, a participatory action research project led by [Research Action Design](http://rad.cat) and supported by the [Open Technology Institute](https://opentechinstitute.org) at [The New America Foundation](https://newamerica.org). It was developed by [Maya Wagoner](https://github.com/mayawagon).
+This used to be the site for the Public Interest Technology Baseline Project, a participatory action research project led by [Research Action Design](http://rad.cat) and supported by the [Open Technology Institute](https://opentechinstitute.org) at [The New America Foundation](https://newamerica.org). It was developed by [Maya Wagoner](https://github.com/mayawagon). The project name has been changed to the Technology and Social Justice Field Scan, and the website now lives at [t4sj.co](http://t4sj.co/) with the code at [https://github.com/opentechinstitute/tech-for-social-justice](https://github.com/opentechinstitute/tech-for-social-justice).
+
+The repo remains because it contains some important code for the "Search Projects and Organizations" page. 
 
 ## Setup
 
